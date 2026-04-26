@@ -789,27 +789,57 @@
     const subject = document.getElementById('fsubject');
     const message = document.getElementById('fmessage');
 
+    // 1. Validation
     let valid = true;
     [name, email, message].forEach(f => {
       f.classList.remove('error');
-      if (!f.value.trim()) { f.classList.add('error'); valid = false; f.addEventListener('input', () => f.classList.remove('error'), { once: true }); }
+      if (!f.value.trim()) { 
+        f.classList.add('error'); 
+        valid = false; 
+        f.addEventListener('input', () => f.classList.remove('error'), { once: true }); 
+      }
     });
+    
     if (!valid) return;
 
-    // Open default mail client with pre-filled content
-    const mailto = `mailto:kunalagarwal2611@gmail.com`
-      + `?subject=${encodeURIComponent(subject.value.trim() || 'Portfolio Contact: ' + name.value.trim())}`
-      + `&body=${encodeURIComponent('Name: ' + name.value.trim() + '\nEmail: ' + email.value.trim() + '\n\n' + message.value.trim())}`;
-    window.location.href = mailto;
-
-    // Show success state after brief delay
+    // 2. Loading State
     const btn = document.getElementById('sendBtn');
     btn.disabled = true;
     btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="37.7" stroke-dashoffset="37.7"><animate attributeName="stroke-dashoffset" from="37.7" to="0" dur="0.6s" fill="freeze"/></circle></svg> Sending…';
-    setTimeout(() => {
-      document.getElementById('contactFormInner').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('visible');
-    }, 800);
+
+    // 3. Send Data to Web3Forms
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        access_key: "b185d4fa-6127-4826-b63b-2c3e59f6c488", // <-- PASTE YOUR KEY HERE
+        name: name.value.trim(),
+        email: email.value.trim(),
+        subject: subject.value.trim() || 'Portfolio Contact from ' + name.value.trim(),
+        message: message.value.trim(),
+        from_name: "Portfolio Notification"
+      })
+    })
+    .then(async (response) => {
+      if (response.status == 200) {
+        // Success: Hide form, show success message
+        document.getElementById('contactFormInner').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('visible');
+      } else {
+        // Server Error
+        btn.innerHTML = 'Error. Try Again?';
+        btn.disabled = false;
+      }
+    })
+    .catch(error => {
+      // Network Error
+      console.error("Form submission failed:", error);
+      btn.innerHTML = 'Network Error. Try Again?';
+      btn.disabled = false;
+    });
   }
 </script>
 </body>
