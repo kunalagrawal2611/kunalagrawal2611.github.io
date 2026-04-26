@@ -817,6 +817,7 @@
       },
       body: JSON.stringify({
         access_key: "b185d4fa-6127-4826-b63b-2c3e59f6c488", // <-- PASTE YOUR KEY HERE
+        botcheck: document.getElementById('botcheck').checked,
         name: name.value.trim(),
         email: email.value.trim(),
         subject: subject.value.trim() || 'Portfolio Contact from ' + name.value.trim(),
