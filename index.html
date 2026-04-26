@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kunal Agrawal — Computer Vision Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b10;
+    --bg2: #0d1117;
+    --bg3: #111820;
+    --surface: #141c26;
+    --surface2: #1a2333;
+    --accent: #00d4aa;
+    --accent2: #0088ff;
+    --accent3: #7c3aed;
+    --text: #e8edf4;
+    --text2: #8fa3b8;
+    --text3: #4d6070;
+    --border: rgba(0,212,170,0.15);
+    --border2: rgba(255,255,255,0.06);
+    --glow: 0 0 40px rgba(0,212,170,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* DOT GRID */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,212,170,0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(8,11,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border2);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-inner { max-width: 750px; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: rgba(0,212,170,0.05);
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.15rem;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 580px;
+    font-weight: 300;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #000;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .btn-primary:hover { background: #00f0c0; transform: translateY(-2px); }
+  .btn-secondary {
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border2);
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ABOUT */
+  #about {
+    padding: 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text);
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text { font-size: 1rem; color: var(--text2); line-height: 1.9; font-weight: 300; }
+  .about-text p { margin-bottom: 1.5rem; }
+  .about-text strong { color: var(--text); font-weight: 500; }
+  .about-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .about-card {
+    padding: 1.2rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    border-left: 3px solid var(--accent);
+    transition: all 0.2s;
+  }
+  .about-card:hover { background: var(--surface2); transform: translateX(4px); }
+  .about-card-title { font-size: 0.82rem; color: var(--accent); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  .about-card-val { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+  .about-card-sub { font-size: 0.82rem; color: var(--text2); margin-top: 0.2rem; }
+
+  /* Award card variant */
+  .about-card.award-card {
+    border-left-color: #f59e0b;
+    background: rgba(245,158,11,0.05);
+  }
+  .about-card.award-card:hover { background: rgba(245,158,11,0.09); }
+  .about-card.award-card .about-card-title { color: #f59e0b; }
+  .about-card.award-card .about-card-val { color: var(--text); }
+
+  /* EXPERIENCE */
+  #experience {
+    padding: 8rem 4rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+  }
+  .exp-inner { max-width: 1200px; margin: 0 auto; }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border2);
+    position: relative;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text3);
+    padding-top: 0.4rem;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+  .tl-date span { display: block; color: var(--accent); margin-bottom: 0.3rem; font-size: 0.72rem; }
+  .tl-content {}
+  .tl-role { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+  .tl-org { font-size: 0.88rem; color: var(--accent); margin-bottom: 0.2rem; font-family: 'DM Mono', monospace; }
+  .tl-award {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: #f59e0b;
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin: 0.5rem 0 0.8rem;
+    font-family: 'DM Mono', monospace;
+  }
+  .tl-award::before { content: '★'; font-size: 0.65rem; }
+  .tl-bullets { list-style: none; margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .tl-bullets li {
+    font-size: 0.9rem;
+    color: var(--text2);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .tl-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+  .tl-bullets li strong { color: var(--text); font-weight: 500; }
+
+  /* PUBLICATIONS */
+  #publications { padding: 8rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .pub-filter {
+    display: flex; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 6px 16px;
+    font-size: 0.78rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,212,170,0.06);
+  }
+  .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+  .pub-card {
+    padding: 1.5rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    transition: all 0.2s;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+  .pub-card:hover { background: var(--surface2); border-color: rgba(0,212,170,0.2); box-shadow: var(--glow); }
+  .pub-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    white-space: nowrap;
+  }
+  .badge-review { background: rgba(124,58,237,0.15); color: #a78bfa; border: 1px solid rgba(124,58,237,0.25); }
+  .badge-appear { background: rgba(0,136,255,0.12); color: #60a5fa; border: 1px solid rgba(0,136,255,0.25); }
+  .badge-published { background: rgba(0,212,170,0.1); color: var(--accent); border: 1px solid var(--border); }
+  .pub-title { font-size: 0.97rem; font-weight: 500; color: var(--text); margin-bottom: 0.4rem; line-height: 1.5; }
+  .pub-venue { font-size: 0.82rem; color: var(--text2); font-family: 'DM Mono', monospace; margin-bottom: 0.4rem; }
+  .pub-authors { font-size: 0.8rem; color: var(--text3); }
+  .pub-authors strong { color: var(--accent); font-weight: 500; }
+  .pub-year {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--text3);
+    text-align: right;
+    line-height: 1;
+  }
+
+  /* PROJECTS */
+  #projects {
+    padding: 8rem 4rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+  }
+  .proj-inner { max-width: 1200px; margin: 0 auto; }
+  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .proj-card {
+    padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .proj-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .proj-card:hover { background: var(--surface2); transform: translateY(-3px); }
+  .proj-card:hover::before { opacity: 1; }
+  .proj-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(0,212,170,0.1);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .proj-name { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+  .proj-desc { font-size: 0.88rem; color: var(--text2); line-height: 1.7; margin-bottom: 1.2rem; font-weight: 300; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--border2);
+    color: var(--text3);
+  }
+  .proj-venue {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  /* SKILLS */
+  #skills { padding: 8rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .skill-group {
+    padding: 1.8rem;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+  }
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border2);
+  }
+  .skill-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .skill-item { font-size: 0.88rem; color: var(--text2); display: flex; align-items: center; gap: 8px; }
+  .skill-item::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+  .cert-badges { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
+  .cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border2);
+    background: var(--bg3);
+    font-size: 0.82rem;
+    color: var(--text2);
+  }
+  .cert-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* CONTACT */
+  #contact {
+    padding: 8rem 4rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+  }
+  .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .contact-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  .contact-sub { font-size: 1rem; color: var(--text2); margin-bottom: 3rem; font-weight: 300; line-height: 1.8; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text2);
+    font-size: 0.85rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+    background: var(--surface);
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,212,170,0.05); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    background: var(--bg);
+    border-top: 1px solid var(--border2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-text { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text3); }
+  .footer-accent { color: var(--accent); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--text3); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero, #about, #publications, #skills { padding: 6rem 1.5rem 4rem; }
+    #experience, #projects, #contact { padding: 5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">kunal.research</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">PhD Researcher &middot; Dayton, OH &middot; Open to Opportunities</div>
+    <h1 class="hero-name">Kunal<br><em>Agrawal</em></h1>
+    <p class="hero-desc">
+      I build AI systems that <strong>see, understand, and remember.</strong> 
+      PhD researcher in Computer Vision at the University of Dayton — publishing at 
+      <strong>ECCV, ACM Multimedia</strong>, and international venues. Specializing in 
+      generative AI, multi-modal fusion, and scene understanding.
+    </p>
+    <div class="hero-cta">
+      <a href="#publications" class="btn-primary">View Research</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">9</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Top-Tier Under Review</div>
+      </div>
+      <div>
+        <div class="stat-num">3.96</div>
+        <div class="stat-label">PhD GPA</div>
+      </div>
+      <div>
+        <div class="stat-num">4.00</div>
+        <div class="stat-label">Masters GPA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title fade-up">The researcher<br>behind the work</h2>
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p>
+        I am a Computer Science PhD candidate at the <strong>University of Dayton</strong>, 
+        working in the Vision and Mixed Reality Lab under Dr. Tam Nguyen. My research 
+        sits at the intersection of deep learning, generative AI, and human visual 
+        perception — asking questions that connect how machines see to how humans remember.
+      </p>
+      <p>
+        Before my PhD, I completed my <strong>Master's degree with a perfect 4.00 GPA</strong> 
+        and earned the Outstanding Graduate Student in Computer Science Award. I also 
+        completed a research internship at <strong>Tan Tock Seng Hospital in Singapore</strong>, 
+        applying computer vision to clinical medical imaging across 60,000+ images.
+      </p>
+      <p>
+        I serve as <strong>Lead Instructor</strong> for Python lab sessions, 
+        peer-review submissions for international CV and ML conferences, and 
+        mentor junior graduate students through the publication pipeline. Outside 
+        the lab, I spent three years in leadership roles with Rotaract in India, 
+        serving as President and Joint Secretary.
+      </p>
+    </div>
+    <div class="about-cards fade-up">
+      <div class="about-card">
+        <div class="about-card-title">Current Position</div>
+        <div class="about-card-val">Graduate Research Assistant (PhD)</div>
+        <div class="about-card-sub">University of Dayton &middot; Aug 2024 &mdash; Present</div>
+      </div>
+      <!-- NEW: Research and Scholarship Award -->
+      <div class="about-card award-card">
+        <div class="about-card-title">&#x2B50; Award &mdash; Doctoral</div>
+        <div class="about-card-val">Research and Scholarship Award</div>
+        <div class="about-card-sub">University of Dayton &middot; Doctoral Student Recognition</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Research Focus</div>
+        <div class="about-card-val">Saliency Detection &middot; Scene Graph Generation</div>
+        <div class="about-card-sub">Visual Working Memory &middot; Multi-modal Data Fusion</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Education</div>
+        <div class="about-card-val">PhD Computer Science (In Progress)</div>
+        <div class="about-card-sub">MS Computer Science &middot; GPA 4.00 &middot; Outstanding Award</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Location</div>
+        <div class="about-card-val">Dayton, Ohio, United States</div>
+        <div class="about-card-sub">Open to remote and relocation</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Certifications</div>
+        <div class="about-card-val">AWS &middot; Cisco &middot; Microsoft</div>
+        <div class="about-card-sub">Cloud Practitioner &middot; Data Analytics &middot; MTA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title fade-up">Where I have worked</h2>
+    <div class="timeline">
+
+      <div class="timeline-item fade-up">
+        <div class="tl-date">
+          <span>Current</span>
+          Aug 2025 &mdash; Present
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">Graduate Teaching Assistant &amp; Lead Instructor</div>
+          <div class="tl-org">University of Dayton</div>
+          <ul class="tl-bullets">
+            <li>Sole instructor for hands-on Python lab sessions for undergraduate and graduate Computer Science students. Designed all lab materials, problem sets, and assessment rubrics from scratch.</li>
+            <li>Delivered technical lectures covering Python fundamentals through advanced ML implementation.</li>
+            <li>Provided code review and debugging support for student ML/CV projects using PyTorch and OpenCV.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="tl-date">
+          <span>PhD Research</span>
+          Aug 2024 &mdash; Present
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">Graduate Research Assistant (PhD)</div>
+          <div class="tl-org">University of Dayton &mdash; Vision &amp; Mixed Reality Lab</div>
+          <!-- NEW: Research and Scholarship Award badge -->
+          <div class="tl-award">Research and Scholarship Award &mdash; Doctoral Student</div>
+          <ul class="tl-bullets">
+            <li>Architected <strong>SeMemo</strong>, a Generative AI-powered dataset disentangling semantic content from visual features for Visual Working Memory analysis. Under review at <strong>ECCV 2026</strong>.</li>
+            <li>Built <strong>SALOCON</strong>, a salient object detection framework using scene graphs and Kosmos-2 for context-aware scene understanding. Under review at <strong>ACM Multimedia 2026</strong>.</li>
+            <li>Engineered a multi-modal house price prediction pipeline fusing street-view imagery, interior attributes, and macro-economic data using XGBoost and Neural Networks. Accepted at SoICT 2025.</li>
+            <li>Spearheaded <strong>AEye</strong>, an automated avian monitoring system processing high-resolution streaming video. Accepted at SoICT 2025.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="tl-date">
+          <span>Simulation</span>
+          Jan 2026
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">AI in Action Job Simulation</div>
+          <div class="tl-org">Vista Equity Partners &mdash; Remote</div>
+          <ul class="tl-bullets">
+            <li>Applied Vista's 4-part prompt engineering framework to synthesize customer NPS data into executive-ready reports, improving output clarity by over 50%.</li>
+            <li>Designed repeatable GenAI workflow automations for news aggregation, data reconciliation, and qualitative insight summarization using ChatGPT and Microsoft Copilot.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="tl-date">
+          <span>Masters Research</span>
+          Aug 2022 &mdash; Dec 2023
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">Graduate Research Assistant (Masters)</div>
+          <div class="tl-org">University of Dayton</div>
+          <div class="tl-award">Outstanding Graduate Student in CS Award</div>
+          <ul class="tl-bullets">
+            <li>Delivered <strong>89% accuracy</strong> on real-time traffic video anomaly detection using deep learning.</li>
+            <li>Compiled and curated a dataset of <strong>10,000+ annotated images</strong> and <strong>5,000+ hours of video footage</strong> powering multiple real-time detection pipelines.</li>
+            <li>Co-authored <strong>4 peer-reviewed papers</strong> at SoICT 2024 (x2), Multimedia Tools and Applications 2024, and CISS 2024.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="tl-date">
+          <span>Internship</span>
+          Jun 2022 &mdash; Jul 2022
+        </div>
+        <div class="tl-content">
+          <div class="tl-role">Research Intern &mdash; Healthcare Data Science</div>
+          <div class="tl-org">Tan Tock Seng Hospital, Singapore</div>
+          <ul class="tl-bullets">
+            <li>Analyzed 3 clinical datasets comprising <strong>2,000+ patients each</strong>, extracting diagnostic insights to support hospital research initiatives.</li>
+            <li>Built an automated image segmentation pipeline using ImageJ (Fiji) and R that processed <strong>60,000+ medical images</strong> for Granuloma detection, dramatically reducing manual review time.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-label">Research</div>
+  <h2 class="section-title fade-up">9 Publications &amp; counting</h2>
+
+  <div class="pub-filter">
+    <button class="filter-btn active" onclick="filterPubs('all', this)">All (9)</button>
+    <button class="filter-btn" onclick="filterPubs('review', this)">Under Review (2)</button>
+    <button class="filter-btn" onclick="filterPubs('appear', this)">To Appear (2)</button>
+    <button class="filter-btn" onclick="filterPubs('published', this)">Published (5)</button>
+  </div>
+
+  <div class="pub-list">
+
+    <div class="pub-card fade-up" data-status="review">
+      <div>
+        <span class="pub-badge badge-review">Under Review &mdash; ECCV 2026</span>
+        <div class="pub-title">Semantic Matters in Short-Term Image Memorability</div>
+        <div class="pub-venue">European Conference on Computer Vision (ECCV) 2026</div>
+        <div class="pub-authors"><strong>K. Agrawal</strong>, B. T. Tran-Le, M. T. Tran, T. N. Le, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2026</div>
+    </div>
+
+    <div class="pub-card fade-up" data-status="review">
+      <div>
+        <span class="pub-badge badge-review">Under Review &mdash; ACM MM 2026</span>
+        <div class="pub-title">SALOCON: Salient Object Detection in Context</div>
+        <div class="pub-venue">ACM International Conference on Multimedia (ACM MM) 2026</div>
+        <div class="pub-authors"><strong>K. Agrawal</strong>, J. N. R. Merakanapalli, J. Zeng, L. Nguyen, T. N. Le, M. T. Tran, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2026</div>
+    </div>
+
+    <div class="pub-card fade-up" data-status="appear">
+      <div>
+        <span class="pub-badge badge-appear">To Appear &mdash; SoICT 2025</span>
+        <div class="pub-title">House Price Prediction via Attribute, Visual, and Economic Features</div>
+        <div class="pub-venue">International Symposium on Information and Communication Technology (SoICT) 2025</div>
+        <div class="pub-authors">A. Yousif, <strong>K. Agrawal</strong>, B. T. Tran-Le, V. Patel, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2025</div>
+    </div>
+
+    <div class="pub-card fade-up" data-status="appear">
+      <div>
+        <span class="pub-badge badge-appear">To Appear &mdash; SoICT 2025</span>
+        <div class="pub-title">AEye: Avian Monitoring from Streaming Videos</div>
+        <div class="pub-venue">International Symposium on Information and Communication Technology (SoICT) 2025</div>
+        <div class="pub-authors">K. Jamale, <strong>K. Agrawal</strong>, B. T. Tran-Le, J. Merakanapalli, S. Chousalkar, V. Patel, T. N. Le, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2025</div>
+    </div>
+
+    <div class="pub-card fade-up" data-status="published">
+      <div>
+        <span class="pub-badge badge-published">Published</span>
+        <div class="pub-title">Towards Safer Roads: Benchmarking Object Detection Models in Complex Weather Scenarios</div>
+        <div class="pub-venue">Machine Vision and Applications, vol. 36, no. 4, 2025</div>
+        <div class="pub-authors">B. T. Tran-Le, V. Patel, V. T. Huynh, M. K. Tran, <strong>K. Agrawal</strong>, M. T. Tran, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2025</div>
+    </div>
+
+    <div class="pub-card fade-up" data-status="published">
+      <div>
+        <span class="pub-badge badge-published">Published</span>
+        <div class="pub-title">Motorcycle Helmet Detection Benchmarking</div>
+        <div class="pub-venue">SoICT 2024, pp. 203&ndash;215</div>
+        <div class="pub-authors"><strong>K. Agrawal</strong>, V. S. Patel, I. Cannon, M. T. Tran, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2024</div>
+    </div>
+
+    <div class="pub-card fade-up" data-status="published">
+      <div>
+        <span class="pub-badge badge-published">Published</span>
+        <div class="pub-title">Motion Analysis in Static Images</div>
+        <div class="pub-venue">SoICT 2024, pp. 193&ndash;202</div>
+        <div class="pub-authors"><strong>K. Agrawal</strong>, V. S. Patel, R. Tharra, T. N. Le, M. T. Tran, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2024</div>
+    </div>
+
+    <div class="pub-card fade-up" data-status="published">
+      <div>
+        <span class="pub-badge badge-published">Published</span>
+        <div class="pub-title">Image De-Photobombing Benchmark</div>
+        <div class="pub-venue">Multimedia Tools and Applications, vol. 83, no. 29, pp. 73553&ndash;73568, 2024</div>
+        <div class="pub-authors">V. S. Patel, <strong>K. Agrawal</strong>, S. S. Baraheem, A. Yousif, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2024</div>
+    </div>
+
+    <div class="pub-card fade-up" data-status="published">
+      <div>
+        <span class="pub-badge badge-published">Published</span>
+        <div class="pub-title">A Comprehensive Analysis of Object Detectors in Adverse Weather Conditions</div>
+        <div class="pub-venue">58th Annual Conference on Information Sciences and Systems (CISS), pp. 1&ndash;6, 2024</div>
+        <div class="pub-authors">V. S. Patel, <strong>K. Agrawal</strong>, T. V. Nguyen</div>
+      </div>
+      <div class="pub-year">2024</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="proj-inner">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title fade-up">What I have built</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card fade-up">
+        <div class="proj-icon">&#x1F9E0;</div>
+        <span class="proj-venue">ECCV 2026 (Under Review)</span>
+        <div class="proj-name">SeMemo &mdash; Visual Memory Dataset</div>
+        <div class="proj-desc">A Generative AI-powered dataset that isolates semantic content from low-level visual features to study how humans form and retain visual memories via a change detection paradigm.</div>
+        <div class="proj-tags">
+          <span class="tag">Generative AI</span>
+          <span class="tag">Visual Working Memory</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">Dataset</span>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-icon">&#x1F441;</div>
+        <span class="proj-venue">ACM MM 2026 (Under Review)</span>
+        <div class="proj-name">SALOCON &mdash; Salient Object Detection</div>
+        <div class="proj-desc">Context-aware salient object detection framework leveraging scene graphs and large-scale vision-language models (Kosmos-2) for advanced scene understanding beyond pixel-level features.</div>
+        <div class="proj-tags">
+          <span class="tag">Saliency Detection</span>
+          <span class="tag">Scene Graphs</span>
+          <span class="tag">Kosmos-2</span>
+          <span class="tag">LLMs</span>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-icon">&#x1F426;</div>
+        <span class="proj-venue">SoICT 2025 (To Appear)</span>
+        <div class="proj-name">AEye &mdash; Avian Monitoring System</div>
+        <div class="proj-desc">Specialized deep learning framework for automated real-time avian species monitoring using high-resolution streaming video data analysis for wildlife conservation applications.</div>
+        <div class="proj-tags">
+          <span class="tag">Object Detection</span>
+          <span class="tag">Streaming Video</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Wildlife AI</span>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-icon">&#x1F3D8;</div>
+        <span class="proj-venue">SoICT 2025 (To Appear)</span>
+        <div class="proj-name">Multi-modal House Price Prediction</div>
+        <div class="proj-desc">End-to-end pipeline fusing street-view imagery, interior attributes, and macro-economic data using XGBoost and Neural Networks for robust, explainable real-estate valuation.</div>
+        <div class="proj-tags">
+          <span class="tag">Multi-modal Fusion</span>
+          <span class="tag">XGBoost</span>
+          <span class="tag">Neural Networks</span>
+          <span class="tag">Computer Vision</span>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-icon">&#x1F6F5;</div>
+        <span class="proj-venue">SoICT 2024 &mdash; Published</span>
+        <div class="proj-name">Motorcycle Helmet Detection</div>
+        <div class="proj-desc">Deep learning model for automated helmet violation detection trained on real-world Vietnam traffic footage across daytime and nighttime conditions, integrated into a city planning simulator.</div>
+        <div class="proj-tags">
+          <span class="tag">Object Detection</span>
+          <span class="tag">Traffic Safety</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Benchmarking</span>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-icon">&#x1F4CA;</div>
+        <span class="proj-venue">SoICT 2024 &mdash; Published</span>
+        <div class="proj-name">Motion Analysis in Static Images (MISS)</div>
+        <div class="proj-desc">Introduced the MISS dataset for motion illusion classification in static images. Demonstrated that color features are statistically significant predictors for how AI models perceive perceptual motion.</div>
+        <div class="proj-tags">
+          <span class="tag">Motion Illusions</span>
+          <span class="tag">Dataset Curation</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Perception</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <h2 class="section-title fade-up">Technical toolkit</h2>
+  <div class="skills-grid">
+
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">AI &amp; Machine Learning</div>
+      <div class="skill-list">
+        <span class="skill-item">Generative AI</span>
+        <span class="skill-item">Large Language Models (LLMs)</span>
+        <span class="skill-item">Deep Learning</span>
+        <span class="skill-item">XGBoost</span>
+        <span class="skill-item">Multi-modal Data Fusion</span>
+        <span class="skill-item">Saliency Detection</span>
+        <span class="skill-item">Scene Graph Generation</span>
+        <span class="skill-item">Prompt Engineering</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">Computer Vision</div>
+      <div class="skill-list">
+        <span class="skill-item">Object Detection</span>
+        <span class="skill-item">Image Memorability Analysis</span>
+        <span class="skill-item">Motion Analysis</span>
+        <span class="skill-item">Image Segmentation</span>
+        <span class="skill-item">Adverse Weather Robustness</span>
+        <span class="skill-item">Video Analysis</span>
+        <span class="skill-item">Image Restoration</span>
+        <span class="skill-item">Benchmarking &amp; Evaluation</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-up">
+      <div class="skill-group-title">Programming &amp; Tools</div>
+      <div class="skill-list">
+        <span class="skill-item">Python (PyTorch, TensorFlow, Keras)</span>
+        <span class="skill-item">OpenCV</span>
+        <span class="skill-item">C / C++</span>
+        <span class="skill-item">SQL &amp; R</span>
+        <span class="skill-item">MATLAB</span>
+        <span class="skill-item">AWS (EC2, S3, RDS)</span>
+        <span class="skill-item">Linux &amp; Git</span>
+        <span class="skill-item">Tableau &amp; LaTeX</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-up" style="grid-column: 1 / -1;">
+      <div class="skill-group-title">Certifications</div>
+      <div class="cert-badges" style="flex-direction: row; flex-wrap: wrap;">
+        <div class="cert-badge">
+          <div class="cert-dot" style="background: #f59e0b;"></div>
+          AWS Certified Cloud Practitioner
+        </div>
+        <div class="cert-badge">
+          <div class="cert-dot" style="background: #3b82f6;"></div>
+          Cisco Data Analytics Essentials
+        </div>
+        <div class="cert-badge">
+          <div class="cert-dot" style="background: #10b981;"></div>
+          Microsoft Technology Associate (MTA): Cloud &amp; Networking
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content: center;">Contact</div>
+    <h2 class="contact-title fade-up">
+      Let's build something<br><em style="font-family:'DM Serif Display',serif; font-style:italic; color:var(--accent);">worth seeing</em>
+    </h2>
+    <p class="contact-sub fade-up">
+      I am actively exploring full-time roles in Machine Learning Engineering, 
+      Computer Vision Research, and Applied AI. If you are working on hard problems 
+      in vision or AI, I would love to connect.
+    </p>
+    <div class="contact-links fade-up">
+      <a href="mailto:kunalagarwal2611@gmail.com" class="contact-link">
+        &#x2709; kunalagarwal2611@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/kunal-agrawal-phd/" class="contact-link" target="_blank">
+        &#x1F4BC; LinkedIn
+      </a>
+      <a href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" class="contact-link" target="_blank">
+        &#x1F393; Google Scholar
+      </a>
+      <a href="https://www.researchgate.net/profile/Kunal-Agrawal-6/research" class="contact-link" target="_blank">
+        &#x1F4D6; ResearchGate
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-text">Kunal Agrawal &copy; 2025 &mdash; Built with intention</span>
+  <span class="footer-text">PhD Candidate &middot; University of Dayton &middot; <span class="footer-accent">Computer Vision</span></span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function filterPubs(status, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-card').forEach(card => {
+      if (status === 'all' || card.dataset.status === status) {
+        card.style.display = 'grid';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
