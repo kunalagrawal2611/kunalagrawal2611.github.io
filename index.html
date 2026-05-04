@@ -95,85 +95,45 @@
   .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--text2); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
 
-  /* Hamburger — FIX #5 */
   .nav-hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 32px; height: 32px;
-    background: none; border: none; cursor: pointer; padding: 4px;
-    flex-shrink: 0;
+    display: none; flex-direction: column; justify-content: center;
+    gap: 5px; width: 32px; height: 32px;
+    background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0;
   }
-  .nav-hamburger span {
-    display: block; width: 100%; height: 2px;
-    background: var(--text2); border-radius: 2px;
-    transition: transform 0.3s, opacity 0.3s, background 0.2s;
-  }
+  .nav-hamburger span { display: block; width: 100%; height: 2px; background: var(--text2); border-radius: 2px; transition: transform 0.3s, opacity 0.3s, background 0.2s; }
   .nav-hamburger:hover span { background: var(--accent); }
   .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* Mobile drawer */
   .mobile-menu {
-    display: none;
-    position: fixed; top: 61px; left: 0; right: 0; z-index: 99;
-    background: var(--nav-bg);
-    backdrop-filter: blur(20px);
+    display: none; position: fixed; top: 61px; left: 0; right: 0; z-index: 99;
+    background: var(--nav-bg); backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border2);
-    padding: 1.2rem 1.5rem;
-    flex-direction: column; gap: 0;
-    transform: translateY(-8px);
-    opacity: 0;
+    padding: 1.2rem 1.5rem; flex-direction: column; gap: 0;
+    transform: translateY(-8px); opacity: 0;
     transition: transform 0.25s ease, opacity 0.25s ease;
     pointer-events: none;
   }
-  .mobile-menu.open {
-    display: flex;
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
-  .mobile-menu a {
-    font-size: 0.9rem; font-weight: 500; color: var(--text2);
-    text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
-    padding: 0.8rem 0; border-bottom: 1px solid var(--border2);
-    transition: color 0.2s;
-  }
+  .mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; pointer-events: all; }
+  .mobile-menu a { font-size: 0.9rem; font-weight: 500; color: var(--text2); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.8rem 0; border-bottom: 1px solid var(--border2); transition: color 0.2s; }
   .mobile-menu a:last-child { border-bottom: none; }
   .mobile-menu a:hover { color: var(--accent); }
 
   .nav-cv-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 7px 16px;
+    display: inline-flex; align-items: center; gap: 7px; padding: 7px 16px;
     background: var(--accent); color: #000;
     font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500;
     letter-spacing: 0.07em; text-transform: uppercase;
-    border: none; border-radius: 5px; cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-    white-space: nowrap;
+    border: none; border-radius: 5px; cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.2s; white-space: nowrap;
   }
   .nav-cv-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
   .theme-toggle { position: relative; width: 48px; height: 26px; cursor: pointer; flex-shrink: 0; }
   .theme-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
-  .toggle-track {
-    position: absolute; inset: 0;
-    background: var(--toggle-track);
-    border-radius: 100px; border: 1px solid var(--border2);
-    transition: background 0.3s;
-    display: flex; align-items: center; justify-content: space-between; padding: 0 5px;
-    font-size: 0.6rem;
-  }
-  .toggle-thumb {
-    position: absolute; top: 3px; left: 3px;
-    width: 18px; height: 18px; border-radius: 50%;
-    background: var(--accent);
-    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-  }
+  .toggle-track { position: absolute; inset: 0; background: var(--toggle-track); border-radius: 100px; border: 1px solid var(--border2); transition: background 0.3s; display: flex; align-items: center; justify-content: space-between; padding: 0 5px; font-size: 0.6rem; }
+  .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
   [data-theme="light"] .toggle-thumb { transform: translateX(22px); }
 
   section { position: relative; z-index: 1; }
@@ -181,14 +141,7 @@
   /* ── HERO ─────────────────────────────────────────────── */
   #hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; max-width: 1200px; margin: 0 auto; }
   .hero-inner { max-width: 750px; }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent);
-    letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 2rem; padding: 6px 14px;
-    border: 1px solid var(--border); border-radius: 100px;
-    background: rgba(0,212,170,0.05);
-  }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2rem; padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(0,212,170,0.05); }
   [data-theme="light"] .hero-tag { background: rgba(0,143,115,0.06); }
   .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
@@ -259,7 +212,6 @@
   .badge-review { background: rgba(124,58,237,0.15); color: #a78bfa; border: 1px solid rgba(124,58,237,0.25); }
   .badge-appear { background: rgba(0,136,255,0.12); color: #60a5fa; border: 1px solid rgba(0,136,255,0.25); }
   .badge-published { background: rgba(0,212,170,0.1); color: var(--accent); border: 1px solid var(--border); }
-  /* FIX #1 — clinical collaboration badge */
   .badge-clinical { background: rgba(236,72,153,0.1); color: #f472b6; border: 1px solid rgba(236,72,153,0.25); }
   .pub-title { font-size: 0.97rem; font-weight: 500; color: var(--text); margin-bottom: 0.4rem; line-height: 1.5; }
   .pub-venue { font-size: 0.82rem; color: var(--text2); font-family: 'DM Mono', monospace; margin-bottom: 0.4rem; }
@@ -271,10 +223,26 @@
   #projects { padding: 8rem 4rem; background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
   .proj-inner { max-width: 1200px; margin: 0 auto; }
   .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+
+  /* Project card hidden state */
   .proj-card { padding: 2rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; transition: all 0.25s; position: relative; overflow: hidden; }
   .proj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.2s; }
   .proj-card:hover { background: var(--surface2); transform: translateY(-3px); }
   .proj-card:hover::before { opacity: 1; }
+
+  /* Cards beyond the first 6 are hidden by default */
+  .proj-card.proj-hidden {
+    display: none;
+  }
+  .proj-card.proj-hidden.proj-visible {
+    display: block;
+    animation: cardReveal 0.35s ease forwards;
+  }
+  @keyframes cardReveal {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   .proj-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(0,212,170,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.2rem; }
   [data-theme="light"] .proj-icon { background: rgba(0,143,115,0.08); }
   .proj-name { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
@@ -282,6 +250,26 @@
   .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 3px; border: 1px solid var(--border2); color: var(--text3); }
   .proj-venue { display: inline-block; font-size: 0.72rem; font-family: 'DM Mono', monospace; color: var(--accent); margin-bottom: 1rem; opacity: 0.8; }
+
+  /* Show more / show less button */
+  .proj-toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+  .btn-proj-toggle {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px;
+    background: transparent; color: var(--accent);
+    font-family: 'DM Mono', monospace; font-size: 0.78rem;
+    font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    border: 1px solid var(--border); border-radius: 6px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-proj-toggle:hover { background: rgba(0,212,170,0.06); border-color: var(--accent); }
+  [data-theme="light"] .btn-proj-toggle:hover { background: rgba(0,143,115,0.06); }
+  .btn-proj-toggle svg { transition: transform 0.3s ease; }
+  .btn-proj-toggle.expanded svg { transform: rotate(180deg); }
 
   /* ── SKILLS ───────────────────────────────────────────── */
   #skills { padding: 8rem 4rem; max-width: 1200px; margin: 0 auto; }
@@ -310,10 +298,31 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
   .form-group label { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
-  .form-group input, .form-group textarea { background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 7px; padding: 11px 14px; color: var(--text); font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 300; outline: none; transition: border-color 0.2s, box-shadow 0.2s, background 0.35s, color 0.35s; width: 100%; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 7px;
+    padding: 11px 14px; color: var(--text); font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem; font-weight: 300; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.35s, color 0.35s; width: 100%;
+  }
+  /* Custom select arrow */
+  .form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%234d6070' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .form-group select option {
+    background: var(--bg2);
+    color: var(--text);
+  }
   .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text3); }
-  .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--input-focus); }
-  .form-group input.error, .form-group textarea.error { border-color: #f87171; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--input-focus); }
+  .form-group input.error, .form-group textarea.error, .form-group select.error { border-color: #f87171; }
   .form-group textarea { resize: vertical; min-height: 120px; }
   .form-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem; }
   .form-note { font-size: 0.78rem; color: var(--text3); font-family: 'DM Mono', monospace; }
@@ -327,18 +336,8 @@
   .success-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--text); }
   .success-sub { font-size: 0.9rem; color: var(--text2); font-weight: 300; }
 
-  /* ── BACK TO TOP — FIX #6 ─────────────────────────────── */
-  .back-to-top {
-    position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
-    width: 42px; height: 42px;
-    background: var(--surface); border: 1px solid var(--border2);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    color: var(--text2); cursor: pointer;
-    opacity: 0; transform: translateY(12px);
-    transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s, background 0.2s;
-    pointer-events: none;
-    box-shadow: var(--shadow);
-  }
+  /* ── BACK TO TOP ──────────────────────────────────────── */
+  .back-to-top { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; width: 42px; height: 42px; background: var(--surface); border: 1px solid var(--border2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text2); cursor: pointer; opacity: 0; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s, background 0.2s; pointer-events: none; box-shadow: var(--shadow); }
   .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
   .back-to-top:hover { border-color: var(--accent); color: var(--accent); background: var(--surface2); }
 
@@ -398,14 +397,12 @@
       <div class="toggle-track"><span>🌙</span><span>☀️</span></div>
       <div class="toggle-thumb"></div>
     </label>
-    <!-- FIX #5: Hamburger -->
     <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile nav drawer -->
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
   <a href="#about" onclick="closeMobileMenu()">About</a>
   <a href="#experience" onclick="closeMobileMenu()">Experience</a>
@@ -459,7 +456,6 @@
         <div class="about-card-val">Research and Scholarship Award</div>
         <div class="about-card-sub">University of Dayton &middot; Doctoral Student Recognition</div>
       </div>
-      <!-- FIX #4: Lab card -->
       <div class="about-card">
         <div class="about-card-title">Research Lab</div>
         <div class="about-card-val">Vision &amp; Mixed Reality Lab</div>
@@ -470,7 +466,6 @@
         <div class="about-card-val">Saliency Detection &middot; Scene Graph Generation</div>
         <div class="about-card-sub">Visual Working Memory &middot; Multi-modal Data Fusion</div>
       </div>
-      <!-- FIX #3: Peer reviewer card -->
       <div class="about-card">
         <div class="about-card-title">&#x1F50D; Service</div>
         <div class="about-card-val">Peer Reviewer</div>
@@ -612,7 +607,6 @@
       <div class="pub-authors">K. Jamale, <strong>K. Agrawal</strong>, B. T. Tran-Le, J. Merakanapalli, S. Chousalkar, V. Patel, T. N. Le, T. V. Nguyen</div></div>
       <div class="pub-year">2025</div>
     </div>
-    <!-- FIX #1: Clinical collaboration badge -->
     <div class="pub-card fade-up" data-status="published">
       <div><span class="pub-badge badge-clinical">Published &mdash; Clinical Collaboration</span>
       <div class="pub-title">Dietary omega-3 polyunsaturated fatty acids as a protective factor of myopia: the Hong Kong Children Eye Study</div>
@@ -663,7 +657,9 @@
   <div class="proj-inner">
     <div class="section-label">Projects</div>
     <h2 class="section-title fade-up">What I have built</h2>
-    <div class="proj-grid">
+    <div class="proj-grid" id="projGrid">
+
+      <!-- Cards 1–6: always visible -->
       <div class="proj-card fade-up">
         <div class="proj-icon">&#x1F9E0;</div>
         <span class="proj-venue">Independent Research</span>
@@ -671,6 +667,7 @@
         <div class="proj-desc">A Generative AI-powered dataset that isolates semantic content from low-level visual features to study how humans form and retain visual memories via a change detection paradigm.</div>
         <div class="proj-tags"><span class="tag">Generative AI</span><span class="tag">Visual Working Memory</span><span class="tag">Computer Vision</span><span class="tag">Dataset</span></div>
       </div>
+
       <div class="proj-card fade-up">
         <div class="proj-icon">&#x1F441;</div>
         <span class="proj-venue">ACM MM 2026 (Under Review)</span>
@@ -678,6 +675,7 @@
         <div class="proj-desc">Context-aware salient object detection framework leveraging scene graphs and large-scale vision-language models (Kosmos-2) for advanced scene understanding beyond pixel-level features.</div>
         <div class="proj-tags"><span class="tag">Saliency Detection</span><span class="tag">Scene Graphs</span><span class="tag">Kosmos-2</span><span class="tag">LLMs</span></div>
       </div>
+
       <div class="proj-card fade-up">
         <div class="proj-icon">&#x1F426;</div>
         <span class="proj-venue">SoICT 2025 (To Appear)</span>
@@ -685,7 +683,7 @@
         <div class="proj-desc">Specialized deep learning framework for automated real-time avian species monitoring using high-resolution streaming video data analysis for wildlife conservation applications.</div>
         <div class="proj-tags"><span class="tag">Object Detection</span><span class="tag">Streaming Video</span><span class="tag">PyTorch</span><span class="tag">Wildlife AI</span></div>
       </div>
-      <!-- FIX #2: AEye² project card -->
+
       <div class="proj-card fade-up">
         <div class="proj-icon">&#x1F319;</div>
         <span class="proj-venue">Informatica (Under Review)</span>
@@ -693,6 +691,7 @@
         <div class="proj-desc">Extended avian monitoring system combining daytime and nighttime detection into a unified hybrid pipeline, improving species coverage and round-the-clock wildlife surveillance accuracy.</div>
         <div class="proj-tags"><span class="tag">Hybrid Detection</span><span class="tag">Night Vision</span><span class="tag">Wildlife AI</span><span class="tag">Deep Learning</span></div>
       </div>
+
       <div class="proj-card fade-up">
         <div class="proj-icon">&#x1F3D8;</div>
         <span class="proj-venue">SoICT 2025 (To Appear)</span>
@@ -700,7 +699,7 @@
         <div class="proj-desc">End-to-end pipeline fusing street-view imagery, interior attributes, and macro-economic data using XGBoost and Neural Networks for robust, explainable real-estate valuation.</div>
         <div class="proj-tags"><span class="tag">Multi-modal Fusion</span><span class="tag">XGBoost</span><span class="tag">Neural Networks</span><span class="tag">Computer Vision</span></div>
       </div>
-      <!-- FIX #2: Furniture Matters project card -->
+
       <div class="proj-card fade-up">
         <div class="proj-icon">&#x1FA91;</div>
         <span class="proj-venue">Informatica (Under Review)</span>
@@ -708,21 +707,34 @@
         <div class="proj-desc">Extends house price prediction by incorporating fine-grained interior furniture attributes, demonstrating that room-level visual semantics carry significant predictive signal for property valuation.</div>
         <div class="proj-tags"><span class="tag">Interior Analysis</span><span class="tag">Computer Vision</span><span class="tag">Real Estate AI</span><span class="tag">Multi-modal</span></div>
       </div>
-      <div class="proj-card fade-up">
+
+      <!-- Cards 7–8: hidden by default, revealed on toggle -->
+      <div class="proj-card proj-hidden fade-up">
         <div class="proj-icon">&#x1F6F5;</div>
         <span class="proj-venue">SoICT 2024 &mdash; Published</span>
         <div class="proj-name">Motorcycle Helmet Detection</div>
         <div class="proj-desc">Deep learning model for automated helmet violation detection trained on real-world Vietnam traffic footage across daytime and nighttime conditions, integrated into a city planning simulator.</div>
         <div class="proj-tags"><span class="tag">Object Detection</span><span class="tag">Traffic Safety</span><span class="tag">OpenCV</span><span class="tag">Benchmarking</span></div>
       </div>
-      <div class="proj-card fade-up">
+
+      <div class="proj-card proj-hidden fade-up">
         <div class="proj-icon">&#x1F4CA;</div>
         <span class="proj-venue">SoICT 2024 &mdash; Published</span>
         <div class="proj-name">Motion Analysis in Static Images (MISS)</div>
         <div class="proj-desc">Introduced the MISS dataset for motion illusion classification in static images. Demonstrated that color features are statistically significant predictors for how AI models perceive perceptual motion.</div>
         <div class="proj-tags"><span class="tag">Motion Illusions</span><span class="tag">Dataset Curation</span><span class="tag">Deep Learning</span><span class="tag">Perception</span></div>
       </div>
+
     </div>
+
+    <!-- Show more / less toggle -->
+    <div class="proj-toggle-wrap">
+      <button class="btn-proj-toggle" id="projToggle" onclick="toggleProjects()">
+        <span id="projToggleLabel">Show 2 more projects</span>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" id="projToggleIcon"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
   </div>
 </section>
 
@@ -781,6 +793,7 @@
       <a href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" class="contact-link" target="_blank" rel="noopener">&#x1F393; Google Scholar</a>
       <a href="https://www.researchgate.net/profile/Kunal-Agrawal-6/research" class="contact-link" target="_blank" rel="noopener">&#x1F4D6; ResearchGate</a>
     </div>
+
     <div class="contact-form-wrap fade-up">
       <div class="form-title">Send a message</div>
       <div id="contactFormInner">
@@ -795,9 +808,17 @@
             <input type="email" id="femail" placeholder="you@example.com" autocomplete="email">
           </div>
         </div>
+        <!-- Subject dropdown replacing free-text field -->
         <div class="form-group">
-          <label for="fsubject">Subject</label>
-          <input type="text" id="fsubject" placeholder="Research collaboration, job opportunity, etc.">
+          <label for="fsubject">Inquiry Type</label>
+          <select id="fsubject">
+            <option value="" disabled selected>Select a topic…</option>
+            <option value="Research Collaboration">Research Collaboration</option>
+            <option value="Job Opportunity">Job Opportunity</option>
+            <option value="Speaking / Invited Talk">Speaking / Invited Talk</option>
+            <option value="Press / Media">Press / Media</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="fmessage">Message</label>
@@ -825,13 +846,12 @@
   <span class="footer-text">PhD Candidate &middot; University of Dayton &middot; <span class="footer-accent">Computer Vision</span></span>
 </footer>
 
-<!-- FIX #6: Back to top button -->
 <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 <script>
-  /* ── Fade-up on scroll ──────────────────────────────── */
+  /* ── Fade-up ─────────────────────────────────────────── */
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 100); observer.unobserve(e.target); }
@@ -839,7 +859,7 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  /* ── Smooth scroll ──────────────────────────────────── */
+  /* ── Smooth scroll ───────────────────────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
@@ -848,7 +868,7 @@
     });
   });
 
-  /* ── Publication filter ─────────────────────────────── */
+  /* ── Publication filter ──────────────────────────────── */
   function filterPubs(status, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => {
       b.classList.remove('active');
@@ -861,7 +881,7 @@
     });
   }
 
-  /* ── Theme toggle ───────────────────────────────────── */
+  /* ── Theme toggle ────────────────────────────────────── */
   const toggle = document.getElementById('themeToggle');
   const html   = document.documentElement;
   const saved  = localStorage.getItem('kTheme') || 'dark';
@@ -873,9 +893,9 @@
     localStorage.setItem('kTheme', next);
   });
 
-  /* ── FIX #5: Hamburger menu ─────────────────────────── */
-  const hamburger   = document.getElementById('hamburger');
-  const mobileMenu  = document.getElementById('mobileMenu');
+  /* ── Hamburger ───────────────────────────────────────── */
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
   function closeMobileMenu() {
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
@@ -886,18 +906,49 @@
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-expanded', String(isOpen));
   });
-  // Close on outside click
   document.addEventListener('click', e => {
     if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
   });
 
-  /* ── FIX #6: Back to top ────────────────────────────── */
+  /* ── Back to top ─────────────────────────────────────── */
   const btt = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     btt.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
 
-  /* ── FIX #7: Contact form (clean, no stray comments) ── */
+  /* ── Project show more / less ────────────────────────── */
+  let projExpanded = false;
+  function toggleProjects() {
+    projExpanded = !projExpanded;
+    const hiddenCards = document.querySelectorAll('.proj-card.proj-hidden');
+    const btn         = document.getElementById('projToggle');
+    const label       = document.getElementById('projToggleLabel');
+    const count       = hiddenCards.length;
+
+    hiddenCards.forEach((card, i) => {
+      if (projExpanded) {
+        card.classList.add('proj-visible');
+        // stagger the reveal
+        card.style.animationDelay = (i * 80) + 'ms';
+        observer.observe(card); // trigger fade-up for newly shown cards
+      } else {
+        card.classList.remove('proj-visible');
+        card.style.animationDelay = '';
+      }
+    });
+
+    btn.classList.toggle('expanded', projExpanded);
+    label.textContent = projExpanded
+      ? 'Show fewer projects'
+      : 'Show ' + count + ' more project' + (count !== 1 ? 's' : '');
+
+    // When collapsing, scroll back to projects heading so user isn't stranded
+    if (!projExpanded) {
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  /* ── Contact form ────────────────────────────────────── */
   function handleFormSubmit() {
     const name    = document.getElementById('fname');
     const email   = document.getElementById('femail');
@@ -913,6 +964,13 @@
         f.addEventListener('input', () => f.classList.remove('error'), { once: true });
       }
     });
+    // Validate dropdown separately
+    subject.classList.remove('error');
+    if (!subject.value) {
+      subject.classList.add('error');
+      valid = false;
+      subject.addEventListener('change', () => subject.classList.remove('error'), { once: true });
+    }
     if (!valid) return;
 
     const btn = document.getElementById('sendBtn');
@@ -927,7 +985,7 @@
         botcheck: document.getElementById('botcheck').checked,
         name: name.value.trim(),
         email: email.value.trim(),
-        subject: subject.value.trim() || 'Portfolio Contact from ' + name.value.trim(),
+        subject: subject.value + ' — Portfolio Contact from ' + name.value.trim(),
         message: message.value.trim(),
         from_name: "Portfolio Notification"
       })
