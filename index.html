@@ -377,7 +377,6 @@
 </head>
 <body>
 
-<!-- ── NAV ───────────────────────────────────────────────── -->
 <nav>
   <a href="#" class="nav-logo">kunal.research</a>
   <div class="nav-right">
@@ -413,7 +412,6 @@
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </nav>
 
-<!-- ── HERO ───────────────────────────────────────────────── -->
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-tag">PhD Researcher &middot; Dayton, OH &middot; Open to Opportunities</div>
@@ -436,7 +434,6 @@
   </div>
 </section>
 
-<!-- ── ABOUT ──────────────────────────────────────────────── -->
 <section id="about">
   <div class="section-label">About</div>
   <h2 class="section-title fade-up">The researcher<br>behind the work</h2>
@@ -491,7 +488,6 @@
   </div>
 </section>
 
-<!-- ── EXPERIENCE ─────────────────────────────────────────── -->
 <section id="experience">
   <div class="exp-inner">
     <div class="section-label">Experience</div>
@@ -562,7 +558,6 @@
   </div>
 </section>
 
-<!-- ── PUBLICATIONS ───────────────────────────────────────── -->
 <section id="publications">
   <div class="section-label">Research</div>
   <h2 class="section-title fade-up">11 Publications &amp; counting</h2>
@@ -653,14 +648,12 @@
   </div>
 </section>
 
-<!-- ── PROJECTS ───────────────────────────────────────────── -->
 <section id="projects">
   <div class="proj-inner">
     <div class="section-label">Projects</div>
     <h2 class="section-title fade-up">What I have built</h2>
     <div class="proj-grid" id="projGrid">
 
-      <!-- Cards 1–6: always visible -->
       <div class="proj-card fade-up">
         <div class="proj-icon">&#x1F9E0;</div>
         <span class="proj-venue">Independent Research</span>
@@ -709,7 +702,6 @@
         <div class="proj-tags"><span class="tag">Interior Analysis</span><span class="tag">Computer Vision</span><span class="tag">Real Estate AI</span><span class="tag">Multi-modal</span></div>
       </div>
 
-      <!-- Cards 7–8: hidden by default, revealed on toggle -->
       <div class="proj-card proj-hidden fade-up">
         <div class="proj-icon">&#x1F6F5;</div>
         <span class="proj-venue">SoICT 2024 &mdash; Published</span>
@@ -725,13 +717,20 @@
         <div class="proj-desc">Introduced the MISS dataset for motion illusion classification in static images. Demonstrated that color features are statistically significant predictors for how AI models perceive perceptual motion.</div>
         <div class="proj-tags"><span class="tag">Motion Illusions</span><span class="tag">Dataset Curation</span><span class="tag">Deep Learning</span><span class="tag">Perception</span></div>
       </div>
+      
+      <div class="proj-card proj-hidden fade-up">
+        <div class="proj-icon">&#x1F4F1;</div>
+        <span class="proj-venue">Android Application</span>
+        <div class="proj-name">Timesheet Tracker</div>
+        <div class="proj-desc">A simple and efficient mobile application to track working hours and manage project-based timesheets. Features allow users to effortlessly clock in and out, edit manual entries, and view comprehensive daily history reports.</div>
+        <div class="proj-tags"><span class="tag">Android Studio</span><span class="tag">Mobile Development</span><span class="tag">Java</span><span class="tag">Productivity</span></div>
+      </div>
 
     </div>
 
-    <!-- Show more / less toggle -->
     <div class="proj-toggle-wrap">
       <button class="btn-proj-toggle" id="projToggle" onclick="toggleProjects()">
-        <span id="projToggleLabel">Show 2 more projects</span>
+        <span id="projToggleLabel">Show 3 more projects</span>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" id="projToggleIcon"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
@@ -739,7 +738,6 @@
   </div>
 </section>
 
-<!-- ── SKILLS ─────────────────────────────────────────────── -->
 <section id="skills">
   <div class="section-label">Skills</div>
   <h2 class="section-title fade-up">Technical toolkit</h2>
@@ -782,7 +780,6 @@
   </div>
 </section>
 
-<!-- ── CONTACT ────────────────────────────────────────────── -->
 <section id="contact">
   <div class="contact-inner">
     <div class="section-label" style="justify-content:center;">Contact</div>
@@ -809,7 +806,6 @@
             <input type="email" id="femail" placeholder="you@example.com" autocomplete="email">
           </div>
         </div>
-        <!-- Subject dropdown replacing free-text field -->
         <div class="form-group">
           <label for="fsubject">Inquiry Type</label>
           <select id="fsubject">
