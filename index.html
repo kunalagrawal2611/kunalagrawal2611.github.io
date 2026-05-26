@@ -231,26 +231,13 @@
   #projects { padding: 8rem 4rem; background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
   .proj-inner { max-width: 1200px; margin: 0 auto; }
   .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
-
-  /* Project card hidden state */
   .proj-card { padding: 2rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; transition: all 0.25s; position: relative; overflow: hidden; }
   .proj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.2s; }
   .proj-card:hover { background: var(--surface2); transform: translateY(-3px); }
   .proj-card:hover::before { opacity: 1; }
-
-  /* Cards beyond the first 6 are hidden by default */
-  .proj-card.proj-hidden {
-    display: none;
-  }
-  .proj-card.proj-hidden.proj-visible {
-    display: block;
-    animation: cardReveal 0.35s ease forwards;
-  }
-  @keyframes cardReveal {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
+  .proj-card.proj-hidden { display: none; }
+  .proj-card.proj-hidden.proj-visible { display: block; animation: cardReveal 0.35s ease forwards; }
+  @keyframes cardReveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .proj-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(0,212,170,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.2rem; }
   [data-theme="light"] .proj-icon { background: rgba(0,143,115,0.08); }
   .proj-name { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
@@ -258,22 +245,8 @@
   .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 3px; border: 1px solid var(--border2); color: var(--text3); }
   .proj-venue { display: inline-block; font-size: 0.72rem; font-family: 'DM Mono', monospace; color: var(--accent); margin-bottom: 1rem; opacity: 0.8; }
-
-  /* Show more / show less button */
-  .proj-toggle-wrap {
-    display: flex;
-    justify-content: center;
-    margin-top: 2.5rem;
-  }
-  .btn-proj-toggle {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 28px;
-    background: transparent; color: var(--accent);
-    font-family: 'DM Mono', monospace; font-size: 0.78rem;
-    font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    border: 1px solid var(--border); border-radius: 6px;
-    cursor: pointer; transition: all 0.2s;
-  }
+  .proj-toggle-wrap { display: flex; justify-content: center; margin-top: 2.5rem; }
+  .btn-proj-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: transparent; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: all 0.2s; }
   .btn-proj-toggle:hover { background: rgba(0,212,170,0.06); border-color: var(--accent); }
   [data-theme="light"] .btn-proj-toggle:hover { background: rgba(0,143,115,0.06); }
   .btn-proj-toggle svg { transition: transform 0.3s ease; }
@@ -314,20 +287,13 @@
     font-size: 0.9rem; font-weight: 300; outline: none;
     transition: border-color 0.2s, box-shadow 0.2s, background 0.35s, color 0.35s; width: 100%;
   }
-  /* Custom select arrow */
   .form-group select {
-    appearance: none;
-    -webkit-appearance: none;
+    appearance: none; -webkit-appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%234d6070' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 36px;
-    cursor: pointer;
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 36px; cursor: pointer;
   }
-  .form-group select option {
-    background: var(--bg2);
-    color: var(--text);
-  }
+  .form-group select option { background: var(--bg2); color: var(--text); }
   .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text3); }
   .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--input-focus); }
   .form-group input.error, .form-group textarea.error, .form-group select.error { border-color: #f87171; }
@@ -701,12 +667,17 @@
         <div class="proj-tags"><span class="tag">Multi-modal Fusion</span><span class="tag">XGBoost</span><span class="tag">Neural Networks</span><span class="tag">Computer Vision</span></div>
       </div>
 
+      <!-- ── TIMESHEET TRACKER — 3 fixes applied ────────── -->
       <div class="proj-card fade-up">
         <div class="proj-icon">&#x1F4F1;</div>
         <span class="proj-venue">Android Application</span>
         <div class="proj-name">Timesheet Tracker</div>
-        <div class="proj-desc">A simple and efficient mobile application to track working hours and manage project-based timesheets. Features allow users to effortlessly clock in and out, edit manual entries, and view comprehensive daily history reports.<br><br><a href="https://github.com/kunalagrawal2611/timesheet-tracker" target="_blank" style="color: var(--accent); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em;">VIEW ON GITHUB &rarr;</a></div>
-        <div class="proj-tags"><span class="tag">Android Studio</span><span class="tag">Mobile Development</span><span class="tag">Java</span><span class="tag">Productivity</span></div>
+        <!-- FIX #2: new description -->
+        <div class="proj-desc">A privacy-first Android app built in Kotlin to track time across multiple projects. No login, no cloud, no subscriptions. Clock in and out, add manual entries, view trends, and export timesheets as CSV or PDF. Includes JSON backup and restore so your data survives reinstalls. Every byte stays on your device.<br><br>
+        <!-- FIX #3: confirmed correct GitHub link -->
+        <a href="https://github.com/kunalagrawal2611/timesheet-tracker" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em;">VIEW ON GITHUB &rarr;</a></div>
+        <!-- FIX #1: Java → Kotlin, tags reordered per spec -->
+        <div class="proj-tags"><span class="tag">Kotlin</span><span class="tag">Android Studio</span><span class="tag">Mobile Development</span><span class="tag">Privacy-First</span><span class="tag">Productivity</span></div>
       </div>
 
       <div class="proj-card proj-hidden fade-up">
@@ -932,9 +903,8 @@
     hiddenCards.forEach((card, i) => {
       if (projExpanded) {
         card.classList.add('proj-visible');
-        // stagger the reveal
         card.style.animationDelay = (i * 80) + 'ms';
-        observer.observe(card); // trigger fade-up for newly shown cards
+        observer.observe(card);
       } else {
         card.classList.remove('proj-visible');
         card.style.animationDelay = '';
@@ -946,7 +916,6 @@
       ? 'Show fewer projects'
       : 'Show ' + count + ' more project' + (count !== 1 ? 's' : '');
 
-    // When collapsing, scroll back to projects heading so user isn't stranded
     if (!projExpanded) {
       document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -968,7 +937,6 @@
         f.addEventListener('input', () => f.classList.remove('error'), { once: true });
       }
     });
-    // Validate dropdown separately
     subject.classList.remove('error');
     if (!subject.value) {
       subject.classList.add('error');
