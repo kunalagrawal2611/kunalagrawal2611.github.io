@@ -15,16 +15,19 @@
   <meta property="og:description" content="Portfolio and research publications of Kunal Agrawal.">
   <meta property="og:type" content="website">
   <title>Kunal Agrawal — Computer Vision Researcher</title>
-  <link rel="canonical" href="https://kunalagrawal2611.github.io/">
+  <link rel="icon" type="image/png" href="favicon.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Kunal Agrawal",
-    "url": "https://kunalagrawal2611.github.io/",
+    "url": "https://kunalagrawal2611.github.io",
     "jobTitle": "PhD Researcher in Computer Vision",
     "worksFor": [{"@type": "CollegeOrUniversity", "name": "University of Dayton"}],
-    "alumniOf": [{"@type": "CollegeOrUniversity", "name": "University of Dayton"}],
+    "alumniOf": [
+      {"@type": "CollegeOrUniversity", "name": "University of Dayton"},
+      {"@type": "CollegeOrUniversity", "name": "Shri Ramdeobaba College of Engineering and Management"}
+    ],
     "sameAs": [
       "https://www.linkedin.com/in/kunal-agrawal-phd/",
       "https://scholar.google.com/citations?user=4hveYIAAAAAJ",
@@ -32,7 +35,7 @@
     ]
   }
   </script>
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="canonical" href="https://kunalagrawal2611.github.io/">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -366,10 +369,21 @@
 
     /* ── [ENHANCEMENT] 3D & Scroll Enhancements ─────────── */
     #hero-3d-container {
-      position: absolute; inset: 0; z-index: 0; overflow: hidden;
-      pointer-events: none; opacity: 0.45;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.45;
     }
-    #hero-3d-container canvas { width: 100% !important; height: 100% !important; }
+    #hero-3d-container canvas {
+      width: 100% !important;
+      height: 100% !important;
+      background: transparent !important;
+      display: block !important;
+    }
 
     .tilt-card {
       transform-style: preserve-3d;
@@ -398,9 +412,6 @@
       mix-blend-mode: multiply;
     }
 
-
-    .pub-card.visible, .proj-card.visible, .skill-group.visible { animation: scaleIn 0.5s cubic-bezier(0.2,0.8,0.2,1) forwards; }
-    @keyframes scaleIn { from { opacity:0; transform:scale(0.96) } to { opacity:1; transform:scale(1) } }
 
     @media (max-width: 768px), (prefers-reduced-motion: reduce) {
       #hero-3d-container, #bg-depth-layer { display: none !important; }
@@ -449,8 +460,8 @@
   <!-- [ENHANCEMENT] 3D Scene Graph Container -->
   <div id="hero-3d-container" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-tag">PhD Researcher &middot; Dayton, OH &middot; Open to Opportunities</div>
-    <h1 class="hero-name">Kunal<br><em>Agrawal</em></h1>
+    <div class="hero-tag" id="heroTag">PhD Researcher &middot; Dayton, OH &middot; Open to Opportunities</div>
+    <h1 class="hero-name" data-decode>Kunal<br><em>Agrawal</em></h1>
     <p class="hero-desc">I build AI systems that <strong>see, understand, and remember.</strong> PhD researcher in Computer Vision at the University of Dayton — publishing at <strong>ACM Multimedia</strong> and international venues. Specializing in generative AI, multi-modal fusion, and scene understanding.</p>
     <div class="hero-cta">
       <a href="#publications" class="btn-primary">View Research</a>
@@ -471,7 +482,7 @@
 
 <section id="about">
   <div class="section-label">About</div>
-  <h2 class="section-title fade-up">The researcher<br>behind the work</h2>
+  <h2 class="section-title fade-up" data-decode>The researcher<br>behind the work</h2>
   <div class="about-grid">
     <div class="about-text fade-up">
       <p>I am a Computer Science PhD candidate at the <strong>University of Dayton</strong>, working in the Vision and Mixed Reality Lab under Dr. Tam Nguyen. My research sits at the intersection of deep learning, generative AI, and human visual perception — asking questions that connect how machines see to how humans remember.</p>
@@ -819,7 +830,7 @@
 <section id="contact">
   <div class="contact-inner">
     <div class="section-label" style="justify-content:center;">Contact</div>
-    <h2 class="contact-title fade-up">Let's build something<br><em style="font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent);">worth seeing</em></h2>
+    <h2 class="contact-title fade-up" data-decode>Let's build something<br><em style="font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent);">worth seeing</em></h2>
     <p class="contact-sub fade-up">I am actively exploring full-time roles in Machine Learning Engineering, Computer Vision Research, and Applied AI. If you are working on hard problems in vision or AI, I would love to connect.</p>
     <div class="contact-links fade-up">
       <a href="mailto:kunalagarwal2611@gmail.com" class="contact-link">&#x2709; kunalagarwal2611@gmail.com</a>
@@ -887,7 +898,7 @@
 <div id="bg-depth-layer" aria-hidden="true"></div>
 
 <!-- [ENHANCEMENT] Three.js CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
 
 <script>
   /* ── Fade-up ─────────────────────────────────────────── */
@@ -967,8 +978,25 @@
     hiddenCards.forEach((card, i) => {
       if (projExpanded) {
         card.classList.add('proj-visible');
+        card.classList.add('tilt-card');
         card.style.animationDelay = (i * 80) + 'ms';
         observer.observe(card);
+        // Initialize tilt effect for newly revealed card
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          const tiltX = y * -8;
+          const tiltY = x * 8;
+          card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(6px)`;
+          const shadowX = x * 12;
+          const shadowY = y * 12;
+          card.style.boxShadow = `${shadowX}px ${shadowY}px 24px rgba(0,0,0,0.2)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+          card.style.boxShadow = '';
+        });
       } else {
         card.classList.remove('proj-visible');
         card.style.animationDelay = '';
@@ -1017,6 +1045,8 @@
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify({
+        // NOTE: access_key is intentionally client-side for a static portfolio.
+        // For higher security, route through a serverless function or use Formspree with rate limiting.
         access_key: "b185d4fa-6127-4826-b63b-2c3e59f6c488",
         botcheck: document.getElementById('botcheck').checked,
         name: name.value.trim(),
@@ -1049,8 +1079,73 @@
         document.querySelector('.form-footer').insertBefore(errDiv, btn);
       }
       errDiv.textContent = 'Failed to send. Please check your connection or email me directly.';
+      // Remove error message after 5 seconds so it doesn't persist
+      setTimeout(() => { if (errDiv && errDiv.parentNode) errDiv.remove(); }, 5000);
     });
   }
+
+  /* ── Dynamic Greeting ────────────────────────────────── */
+  (function() {
+    const hour = new Date().getHours();
+    let greeting = 'Good morning';
+    let emoji = '☀️';
+    if (hour >= 12 && hour < 18) { greeting = 'Good afternoon'; emoji = '🌤️'; }
+    else if (hour >= 18 || hour < 5) { greeting = 'Good evening'; emoji = '🌙'; }
+    const heroTag = document.getElementById('heroTag');
+    if (heroTag) {
+      heroTag.innerHTML = `${emoji} ${greeting}, researcher &middot; Dayton, OH &middot; Open to Opportunities`;
+    }
+  })();
+
+  /* ── Decoding Text Effect ────────────────────────────── */
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+  function decodeText(element) {
+    const originalHTML = element.innerHTML;
+    const textContent = element.textContent;
+    let iteration = 0;
+    clearInterval(element.interval);
+    element.interval = setInterval(() => {
+      let result = '';
+      let textIndex = 0;
+      let inTag = false;
+      for (let i = 0; i < originalHTML.length; i++) {
+        if (originalHTML[i] === '<') {
+          inTag = true;
+        }
+        if (inTag) {
+          result += originalHTML[i];
+          if (originalHTML[i] === '>') inTag = false;
+        } else {
+          // Only show random character if this position hasn't reached its reveal threshold yet
+          if (textIndex < iteration) {
+            result += textContent[textIndex] || '';
+            textIndex++;
+          } else if (Math.random() > 0.4) {
+            // 60% chance to show real char even before threshold — reduces jumble
+            result += textContent[textIndex] || '';
+            textIndex++;
+          } else {
+            result += letters[Math.floor(Math.random() * letters.length)];
+          }
+        }
+      }
+      element.innerHTML = result;
+      if (iteration >= textContent.length) clearInterval(element.interval);
+      iteration += textContent.length / 60;
+    }, 40);
+  }
+
+  /* Trigger decoding only when the element scrolls into view */
+  const decodeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        decodeText(entry.target);
+        decodeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0 });
+
+  document.querySelectorAll('[data-decode]').forEach(el => decodeObserver.observe(el));
 
   /* ── [ENHANCEMENT] 3D & Scroll Enhancements ─────────── */
   (function() {
@@ -1077,50 +1172,32 @@
       if (!container) return;
 
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
-      camera.position.z = 30;
+      scene.background = null;
+      
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
+      camera.position.z = 50;
 
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, premultipliedAlpha: false });
+      renderer.setClearColor(0x000000, 0);
+      renderer.setSize(w, h);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       container.appendChild(renderer.domElement);
 
-      const count = 120;
-      const geometry = new THREE.BufferGeometry();
-      const positions = new Float32Array(count * 3);
-      for (let i = 0; i < count * 3; i++) positions[i] = (Math.random() - 0.5) * 40;
-      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-      const material = new THREE.PointsMaterial({
+      // Create a wider terrain mesh to fill the screen
+      const geometry = new THREE.PlaneGeometry(100, 60, 40, 40);
+      const material = new THREE.MeshBasicMaterial({
         color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00d4aa',
-        size: 0.15,
-        transparent: true,
-        opacity: 0.6,
-        sizeAttenuation: true
-      });
-      const points = new THREE.Points(geometry, material);
-      scene.add(points);
-
-      const lineMaterial = new THREE.LineBasicMaterial({
-        color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00d4aa',
+        wireframe: true,
         transparent: true,
         opacity: 0.15
       });
-      const lineGeometry = new THREE.BufferGeometry();
-      const linePositions = [];
-      for (let i = 0; i < count; i++) {
-        for (let j = i + 1; j < count; j++) {
-          const dx = positions[i*3] - positions[j*3];
-          const dy = positions[i*3+1] - positions[j*3+1];
-          const dz = positions[i*3+2] - positions[j*3+2];
-          if (Math.sqrt(dx*dx + dy*dy + dz*dz) < 8) {
-            linePositions.push(positions[i*3], positions[i*3+1], positions[i*3+2], positions[j*3], positions[j*3+1], positions[j*3+2]);
-          }
-        }
-      }
-      lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-      const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-      scene.add(lines);
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.rotation.x = -Math.PI / 3;
+      scene.add(mesh);
+
+      const originalPositions = geometry.attributes.position.array.slice();
 
       let mouseX = 0, mouseY = 0;
       document.addEventListener('mousemove', (e) => {
@@ -1131,12 +1208,22 @@
       let animationId;
       function animate() {
         animationId = requestAnimationFrame(animate);
-        points.rotation.y += 0.001;
-        lines.rotation.y += 0.001;
-        points.rotation.x += 0.0005;
-        lines.rotation.x += 0.0005;
-        camera.position.x += (mouseX * 3 - camera.position.x) * 0.05;
-        camera.position.y += (-mouseY * 3 - camera.position.y) * 0.05;
+        const positions = geometry.attributes.position.array;
+        const time = Date.now() * 0.001;
+
+        for (let i = 0; i < positions.length; i += 3) {
+          const x = originalPositions[i];
+          const y = originalPositions[i + 1];
+          // Ripple effect
+          const z = Math.sin(x * 0.5 + time) * Math.cos(y * 0.5 + time) * 2;
+          // Mouse interaction
+          const mouseZ = Math.sin((x - mouseX * 30) * 0.2 + time) * Math.cos((y - mouseY * 30) * 0.2 + time) * 2;
+          positions[i + 2] = z + mouseZ;
+        }
+        geometry.attributes.position.needsUpdate = true;
+
+        camera.position.x += (mouseX * 5 - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY * 5 - camera.position.y) * 0.05;
         camera.lookAt(scene.position);
         renderer.render(scene, camera);
       }
@@ -1151,7 +1238,7 @@
       });
 
       let disposed = false;
-      const observer = new IntersectionObserver(entries => {
+      const sceneObserver = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) {
           cancelAnimationFrame(animationId);
           if (!disposed) {
@@ -1167,7 +1254,7 @@
           animate();
         }
       }, { threshold: 0 });
-      observer.observe(container);
+      sceneObserver.observe(container);
     }
 
     function initCardTilt() {
@@ -1208,16 +1295,132 @@
       }, { passive: true });
     }
 
-    function initScrollObservers() {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting && !e.target.classList.contains('visible')) {
-            setTimeout(() => e.target.classList.add('visible'), 80);
-            obs.unobserve(e.target);
+    function initHeroScene() {
+      const container = document.getElementById('hero-3d-container');
+      if (!container) return;
+
+      const scene = new THREE.Scene();
+      scene.background = null;
+      
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
+      camera.position.z = 50;
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, premultipliedAlpha: false });
+      renderer.setClearColor(0x000000, 0);
+      renderer.setSize(w, h);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      // Create a wider terrain mesh to fill the screen
+      const geometry = new THREE.PlaneGeometry(100, 60, 40, 40);
+      const material = new THREE.MeshBasicMaterial({
+        color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00d4aa',
+        wireframe: true,
+        transparent: true,
+        opacity: 0.15
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.rotation.x = -Math.PI / 3;
+      scene.add(mesh);
+
+      const originalPositions = geometry.attributes.position.array.slice();
+
+      let mouseX = 0, mouseY = 0;
+      document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      }, { passive: true });
+
+      let animationId;
+      function animate() {
+        animationId = requestAnimationFrame(animate);
+        const positions = geometry.attributes.position.array;
+        const time = Date.now() * 0.001;
+
+        for (let i = 0; i < positions.length; i += 3) {
+          const x = originalPositions[i];
+          const y = originalPositions[i + 1];
+          // Ripple effect
+          const z = Math.sin(x * 0.5 + time) * Math.cos(y * 0.5 + time) * 2;
+          // Mouse interaction
+          const mouseZ = Math.sin((x - mouseX * 30) * 0.2 + time) * Math.cos((y - mouseY * 30) * 0.2 + time) * 2;
+          positions[i + 2] = z + mouseZ;
+        }
+        geometry.attributes.position.needsUpdate = true;
+
+        camera.position.x += (mouseX * 5 - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY * 5 - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      });
+
+      let disposed = false;
+      const sceneObserver = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) {
+          cancelAnimationFrame(animationId);
+          if (!disposed) {
+            renderer.dispose();
+            container.removeChild(renderer.domElement);
+            disposed = true;
           }
+        } else if (disposed) {
+          disposed = false;
+          container.appendChild(renderer.domElement);
+          animate();
+        } else {
+          animate();
+        }
+      }, { threshold: 0 });
+      sceneObserver.observe(container);
+    }
+
+    function initCardTilt() {
+      const cards = document.querySelectorAll('.proj-card:not(.proj-hidden), .pub-card, .about-card, .skill-group');
+      cards.forEach(card => {
+        card.classList.add('tilt-card');
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          const tiltX = y * -8;
+          const tiltY = x * 8;
+          card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(6px)`;
+          const shadowX = x * 12;
+          const shadowY = y * 12;
+          card.style.boxShadow = `${shadowX}px ${shadowY}px 24px rgba(0,0,0,0.2)`;
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll('.pub-card, .proj-card, .skill-group').forEach(el => obs.observe(el));
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+          card.style.boxShadow = '';
+        });
+      });
+    }
+
+    function initParallax() {
+      const layer = document.getElementById('bg-depth-layer');
+      if (!layer) return;
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            layer.style.transform = `translateZ(0) scale(1.1) translateY(${scrollY * 0.15}px)`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
     }
   })();
 </script>
