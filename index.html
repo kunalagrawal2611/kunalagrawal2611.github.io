@@ -232,6 +232,23 @@
 
 
 
+    /* ── EXPERIENCE / TIMELINE ─────────────────────────── */
+    #experience { padding: 8rem 4rem; background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
+    .exp-inner { max-width: 1200px; margin: 0 auto; }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--border2), transparent); }
+    .timeline-item { position: relative; margin-bottom: 3rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -2rem; top: 0.4rem; width: 14px; height: 14px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); box-shadow: 0 0 8px rgba(0,212,170,0.3); z-index: 1; }
+    .timeline-item:first-child::before { background: var(--accent); box-shadow: 0 0 16px rgba(0,212,170,0.5); }
+    .tl-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .tl-date span { display: inline-block; background: rgba(0,212,170,0.1); padding: 2px 8px; border-radius: 3px; margin-right: 0.5rem; }
+    .tl-role { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+    .tl-org { font-size: 0.85rem; color: var(--text2); font-family: 'DM Mono', monospace; margin-bottom: 0.5rem; }
+    .tl-award { font-size: 0.82rem; color: var(--accent); margin-bottom: 0.8rem; font-style: italic; }
+    .tl-bullets { list-style: none; padding: 0; }
+    .tl-bullets li { font-size: 0.88rem; color: var(--text2); line-height: 1.7; margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative; }
+    .tl-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: bold; font-size: 1.1rem; }
+
     /* ── PUBLICATIONS ─────────────────────────────────────────── */
     #publications { padding: 8rem 4rem; max-width: 1200px; margin: 0 auto; }
     .pub-filter { display: flex; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
@@ -239,8 +256,10 @@
     .filter-btn.active, .filter-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,212,170,0.06); }
     [data-theme="light"] .filter-btn.active,[data-theme="light"] .filter-btn:hover { background: rgba(0,143,115,0.06); }
     .pub-list { display: flex; flex-direction: column; gap: 1rem; }
-    .pub-card { padding: 1.5rem 2rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 10px; transition: all 0.2s; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
-    .pub-card:hover { background: var(--surface2); border-color: rgba(0,212,170,0.2); box-shadow: var(--glow); }
+    .pub-card { padding: 1.5rem 2rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; transition: all 0.25s; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; position: relative; overflow: hidden; opacity: 1; transform: translateY(0); }
+    .pub-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.2s; }
+    .pub-card:hover { background: var(--surface2); border-color: rgba(0,212,170,0.2); box-shadow: var(--glow); transform: translateY(-3px); }
+    .pub-card:hover::before { opacity: 1; }
     .pub-badge { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 3px; display: inline-block; margin-bottom: 0.7rem; white-space: nowrap; }
     .badge-review { background: rgba(124,58,237,0.15); color: #a78bfa; border: 1px solid rgba(124,58,237,0.25); }
     .badge-appear { background: rgba(0,136,255,0.12); color: #60a5fa; border: 1px solid rgba(0,136,255,0.25); }
@@ -283,8 +302,14 @@
     .skill-group { padding: 1.8rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; }
     .skill-group-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border2); }
     .skill-list { display: flex; flex-direction: column; gap: 0.5rem; }
-    .skill-item { font-size: 0.88rem; color: var(--text2); display: flex; align-items: center; gap: 8px; }
+    .skill-item { font-size: 0.88rem; color: var(--text2); display: flex; align-items: center; gap: 8px; position: relative; }
     .skill-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; flex-shrink: 0; }
+    .skill-bar { width: 100%; height: 3px; background: var(--border2); border-radius: 2px; margin-top: 4px; overflow: hidden; }
+    .skill-bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), rgba(0,212,170,0.5)); border-radius: 2px; transition: width 1s cubic-bezier(0.2,0.8,0.2,1); }
+    .skill-item[data-level] .skill-bar-fill { width: var(--level); }
+    .skill-item.has-bar { flex-direction: column; align-items: flex-start; }
+    .skill-item.has-bar .skill-item-text { display: flex; align-items: center; gap: 8px; }
+    .skill-item.has-bar .skill-item-text::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; flex-shrink: 0; }
     .cert-badges { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
     .cert-badge { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border2); background: var(--bg3); font-size: 0.82rem; color: var(--text2); }
     .cert-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
@@ -336,9 +361,21 @@
     .success-sub { font-size: 0.9rem; color: var(--text2); font-weight: 300; }
 
     /* ── BACK TO TOP ──────────────────────────────────────── */
-    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; width: 42px; height: 42px; background: var(--surface); border: 1px solid var(--border2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text2); cursor: pointer; opacity: 0; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s, background 0.2s; pointer-events: none; box-shadow: var(--shadow); }
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; width: 48px; height: 48px; background: var(--surface); border: 1px solid var(--border2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text2); cursor: pointer; opacity: 0; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s; pointer-events: none; box-shadow: var(--shadow); }
     .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-    .back-to-top:hover { border-color: var(--accent); color: var(--accent); background: var(--surface2); }
+    .back-to-top:hover { border-color: var(--accent); color: var(--accent); background: var(--surface2); box-shadow: 0 0 20px rgba(0,212,170,0.15); }
+    .back-to-top svg { width: 20px; height: 20px; }
+
+    /* ── TOAST NOTIFICATIONS ─────────────────────────────── */
+    .toast-container { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.75rem; pointer-events: none; }
+    .toast { pointer-events: all; background: var(--surface); border: 1px solid var(--border2); border-radius: 10px; padding: 1rem 1.5rem; color: var(--text); font-size: 0.88rem; box-shadow: 0 8px 32px rgba(0,0,0,0.3); opacity: 0; transform: translateX(100%); transition: all 0.4s cubic-bezier(0.2,0.8,0.2,1); max-width: 340px; display: flex; align-items: center; gap: 10px; }
+    .toast.show { opacity: 1; transform: translateX(0); }
+    .toast.success { border-color: rgba(0,212,170,0.3); }
+    .toast.success .toast-icon { color: var(--accent); }
+    .toast.error { border-color: rgba(248,113,113,0.3); }
+    .toast.error .toast-icon { color: #f87171; }
+    .toast-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .toast-text { font-size: 0.85rem; line-height: 1.4; }
 
     /* ── FOOTER ───────────────────────────────────────────── */
     footer { padding: 2rem 4rem; background: var(--bg); border-top: 1px solid var(--border2); display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
@@ -548,6 +585,9 @@
 <body>
   <!-- Reading Progress Bar -->
   <div id="reading-progress"></div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
 
 <nav>
   <a href="#hero" class="nav-logo">kunal.research</a>
@@ -940,28 +980,28 @@
     <div class="skill-group fade-up">
       <div class="skill-group-title">AI &amp; Machine Learning</div>
       <div class="skill-list">
-        <span class="skill-item">Generative AI</span><span class="skill-item">Large Language Models (LLMs)</span>
-        <span class="skill-item">Deep Learning</span><span class="skill-item">XGBoost</span>
-        <span class="skill-item">Multi-modal Data Fusion</span><span class="skill-item">Saliency Detection</span>
-        <span class="skill-item">Scene Graph Generation</span><span class="skill-item">Prompt Engineering</span>
+        <span class="skill-item has-bar" data-level="95"><span class="skill-item-text">Generative AI</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:95%"></div></div></span><span class="skill-item has-bar" data-level="90"><span class="skill-item-text">Large Language Models (LLMs)</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:90%"></div></div></span>
+        <span class="skill-item has-bar" data-level="92"><span class="skill-item-text">Deep Learning</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:92%"></div></div></span><span class="skill-item has-bar" data-level="80"><span class="skill-item-text">XGBoost</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:80%"></div></div></span>
+        <span class="skill-item has-bar" data-level="88"><span class="skill-item-text">Multi-modal Data Fusion</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:88%"></div></div></span><span class="skill-item has-bar" data-level="85"><span class="skill-item-text">Saliency Detection</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:85%"></div></div></span>
+        <span class="skill-item has-bar" data-level="75"><span class="skill-item-text">Scene Graph Generation</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:75%"></div></div></span><span class="skill-item has-bar" data-level="82"><span class="skill-item-text">Prompt Engineering</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:82%"></div></div></span>
       </div>
     </div>
     <div class="skill-group fade-up">
       <div class="skill-group-title">Computer Vision</div>
       <div class="skill-list">
-        <span class="skill-item">Object Detection</span><span class="skill-item">Image Memorability Analysis</span>
-        <span class="skill-item">Motion Analysis</span><span class="skill-item">Image Segmentation</span>
-        <span class="skill-item">Adverse Weather Robustness</span><span class="skill-item">Video Analysis</span>
-        <span class="skill-item">Image Restoration</span><span class="skill-item">Benchmarking &amp; Evaluation</span>
+        <span class="skill-item has-bar" data-level="90"><span class="skill-item-text">Object Detection</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:90%"></div></div></span><span class="skill-item has-bar" data-level="78"><span class="skill-item-text">Image Memorability Analysis</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:78%"></div></div></span>
+        <span class="skill-item has-bar" data-level="75"><span class="skill-item-text">Motion Analysis</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:75%"></div></div></span><span class="skill-item has-bar" data-level="82"><span class="skill-item-text">Image Segmentation</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:82%"></div></div></span>
+        <span class="skill-item has-bar" data-level="70"><span class="skill-item-text">Adverse Weather Robustness</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:70%"></div></div></span><span class="skill-item has-bar" data-level="80"><span class="skill-item-text">Video Analysis</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:80%"></div></div></span>
+        <span class="skill-item has-bar" data-level="72"><span class="skill-item-text">Image Restoration</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:72%"></div></div></span><span class="skill-item has-bar" data-level="85"><span class="skill-item-text">Benchmarking &amp; Evaluation</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:85%"></div></div></span>
       </div>
     </div>
     <div class="skill-group fade-up">
       <div class="skill-group-title">Programming &amp; Tools</div>
       <div class="skill-list">
-        <span class="skill-item">Python (PyTorch, TensorFlow, Keras)</span><span class="skill-item">OpenCV</span>
-        <span class="skill-item">C / C++</span><span class="skill-item">SQL &amp; R</span>
-        <span class="skill-item">MATLAB</span><span class="skill-item">AWS (EC2, S3, RDS)</span>
-        <span class="skill-item">Linux &amp; Git</span><span class="skill-item">Tableau &amp; LaTeX</span>
+        <span class="skill-item has-bar" data-level="95"><span class="skill-item-text">Python (PyTorch, TensorFlow, Keras)</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:95%"></div></div></span><span class="skill-item has-bar" data-level="85"><span class="skill-item-text">OpenCV</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:85%"></div></div></span>
+        <span class="skill-item has-bar" data-level="70"><span class="skill-item-text">C / C++</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:70%"></div></div></span><span class="skill-item has-bar" data-level="65"><span class="skill-item-text">SQL &amp; R</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:65%"></div></div></span>
+        <span class="skill-item has-bar" data-level="60"><span class="skill-item-text">MATLAB</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:60%"></div></div></span><span class="skill-item has-bar" data-level="72"><span class="skill-item-text">AWS (EC2, S3, RDS)</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:72%"></div></div></span>
+        <span class="skill-item has-bar" data-level="88"><span class="skill-item-text">Linux &amp; Git</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:88%"></div></div></span><span class="skill-item has-bar" data-level="65"><span class="skill-item-text">Tableau &amp; LaTeX</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:65%"></div></div></span>
       </div>
     </div>
     <div class="skill-group fade-up" style="grid-column:1/-1;">
@@ -1039,7 +1079,7 @@
 </footer>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 <!-- [ENHANCEMENT] Parallax Depth Layer -->
@@ -1075,7 +1115,19 @@
     btn.classList.add('active');
     btn.setAttribute('aria-pressed', 'true');
     document.querySelectorAll('.pub-card').forEach(c => {
-      c.style.display = (status === 'all' || c.dataset.status === status) ? 'grid' : 'none';
+      const show = (status === 'all' || c.dataset.status === status);
+      c.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+      if (show) {
+        c.style.display = 'grid';
+        requestAnimationFrame(() => {
+          c.style.opacity = '1';
+          c.style.transform = 'translateY(0)';
+        });
+      } else {
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(-8px)';
+        setTimeout(() => { c.style.display = 'none'; }, 350);
+      }
     });
   }
 
@@ -1090,6 +1142,35 @@
     html.setAttribute('data-theme', next);
     localStorage.setItem('kTheme', next);
   });
+
+  /* ── Toast notifications ─────────────────────────────── */
+  function showToast(message, type = 'success') {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    const icon = type === 'success' ? '&#x2705;' : '&#x274C;';
+    toast.innerHTML = `<span class="toast-icon">${icon}</span><span class="toast-text">${message}</span>`;
+    container.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('show'));
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 400);
+    }, 3500);
+  }
+
+  /* ── Skill bars animation on scroll ──────────────────── */
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.style.getPropertyValue('--level');
+        });
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.skill-group').forEach(g => skillObserver.observe(g));
 
   /* ── Hamburger ───────────────────────────────────────── */
   const hamburger  = document.getElementById('hamburger');
@@ -1187,7 +1268,10 @@
       valid = false;
       subject.addEventListener('change', () => subject.classList.remove('error'), { once: true });
     }
-    if (!valid) return;
+    if (!valid) {
+      showToast('Please fill in all required fields.', 'error');
+      return;
+    }
 
     const btn = document.getElementById('sendBtn');
     btn.disabled = true;
@@ -1210,14 +1294,17 @@
     })
     .then(res => {
       if (res.status === 200) {
+        showToast('Message sent successfully! I\'ll get back to you soon.', 'success');
         document.getElementById('contactFormInner').style.display = 'none';
         document.getElementById('formSuccess').classList.add('visible');
       } else {
+        showToast('Failed to send. Please try again or email me directly.', 'error');
         btn.innerHTML = 'Error. Try Again?';
         btn.disabled = false;
       }
     })
     .catch((err) => {
+      showToast('Network error. Please check your connection or email me directly.', 'error');
       btn.innerHTML = 'Network Error. Try Again?';
       btn.disabled = false;
       let errDiv = document.getElementById('formError');
