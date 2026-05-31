@@ -84,7 +84,10 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Outfit', sans-serif;
       background: var(--bg);
@@ -185,7 +188,7 @@
     .btn-cv { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--surface); color: var(--accent); font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
     .btn-cv:hover { background: rgba(0,212,170,0.08); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,212,170,0.12); }
     [data-theme="light"] .btn-cv:hover { background: rgba(0,143,115,0.06); box-shadow: 0 4px 20px rgba(0,143,115,0.1); }
-    .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border2); }
+    .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border2); flex-wrap: wrap; }
     .stat-num { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 0.3rem; }
     .stat-label { font-size: 0.78rem; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; }
 
@@ -227,7 +230,9 @@
     .tl-bullets li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: 0.6; }
     .tl-bullets li strong { color: var(--text); font-weight: 500; }
 
-    /* ── PUBLICATIONS ─────────────────────────────────────── */
+
+
+    /* ── PUBLICATIONS ─────────────────────────────────────────── */
     #publications { padding: 8rem 4rem; max-width: 1200px; margin: 0 auto; }
     .pub-filter { display: flex; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
     .filter-btn { padding: 6px 16px; font-size: 0.78rem; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; border-radius: 4px; border: 1px solid var(--border2); background: transparent; color: var(--text2); cursor: pointer; transition: all 0.2s; }
@@ -251,7 +256,7 @@
     #projects { padding: 8rem 4rem; background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
     .proj-inner { max-width: 1200px; margin: 0 auto; }
     .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
-    .proj-card { padding: 2rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; transition: all 0.25s; position: relative; overflow: hidden; }
+    .proj-card { padding: 2rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; transition: all 0.25s; position: relative; overflow: hidden; cursor: pointer; }
     .proj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.2s; }
     .proj-card:hover { background: var(--surface2); transform: translateY(-3px); }
     .proj-card:hover::before { opacity: 1; }
@@ -413,13 +418,136 @@
     }
 
 
+
+    /* ── READING PROGRESS BAR ──────────────────────────── */
+    #reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent);
+      z-index: 200;
+      width: 0%;
+      transition: width 0.15s ease;
+      box-shadow: 0 0 10px rgba(0,212,170,0.5);
+    }
+    /* ── MODAL ─────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text2);
+      font-size: 1.2rem;
+      transition: all 0.2s;
+    }
+    .modal-close:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,212,170,0.1);
+    }
+    .modal-header {
+      margin-bottom: 1.5rem;
+      padding-right: 3rem;
+    }
+    .modal-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      padding-right: 3rem;
+    }
+    .modal-venue {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .modal-body {
+      font-size: 0.95rem;
+      color: var(--text2);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .modal-body p { margin-bottom: 1rem; }
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+    }
+    .modal-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .modal-links a {
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .modal-links a:hover {
+      background: rgba(0,212,170,0.1);
+      border-color: var(--accent);
+    }
+    .modal-content::-webkit-scrollbar { width: 4px; }
+    .modal-content::-webkit-scrollbar-track { background: transparent; }
+    .modal-content::-webkit-scrollbar-thumb { background: var(--text3); border-radius: 2px; }
+
     @media (max-width: 768px), (prefers-reduced-motion: reduce) {
       #hero-3d-container, #bg-depth-layer { display: none !important; }
       .tilt-card { transform: none !important; box-shadow: none !important; }
     }
+
   </style>
 </head>
 <body>
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress"></div>
 
 <nav>
   <a href="#hero" class="nav-logo">kunal.research</a>
@@ -474,6 +602,10 @@
     <div class="hero-stats">
       <div><div class="stat-num">11</div><div class="stat-label">Publications</div></div>
       <div><div class="stat-num">3</div><div class="stat-label">Under Review</div></div>
+      <div>
+        <div class="stat-num" id="citationCount">—</div>
+        <div class="stat-label">Citations</div>
+      </div>
       <div><div class="stat-num">3.96</div><div class="stat-label">PhD GPA</div></div>
       <div><div class="stat-num">4.00</div><div class="stat-label">Masters GPA</div></div>
     </div>
@@ -604,10 +736,25 @@
   </div>
 </section>
 
-<section id="publications">
-  <div class="section-label">Research</div>
-  <h2 class="section-title fade-up">11 Publications &amp; counting</h2>
-  <div class="pub-filter">
+  <!-- Project Modal -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-venue" id="modal-venue"></div>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+    </div>
+  </div>
+
+  <!-- Publications -->
+  <section id="publications" class="section">
+    <div class="container">
+      <div class="section-label">Research</div>
+      <h2 class="section-title fade-up">11 Publications &amp; counting</h2>
+      <div class="pub-filter">
     <button class="filter-btn active" aria-pressed="true" onclick="filterPubs('all', this)">All (11)</button>
     <button class="filter-btn" aria-pressed="false" onclick="filterPubs('review', this)">Under Review (3)</button>
     <button class="filter-btn" aria-pressed="false" onclick="filterPubs('appear', this)">To Appear (2)</button>
@@ -692,7 +839,8 @@
       <div class="pub-year">2024</div>
     </div>
   </div>
-</section>
+  </div>
+  </section>
 
 <section id="projects">
   <div class="proj-inner">
@@ -700,7 +848,7 @@
     <h2 class="section-title fade-up">What I have built</h2>
     <div class="proj-grid" id="projGrid">
 
-      <div class="proj-card fade-up">
+      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="1">
         <div class="proj-icon">&#x1F9E0;</div>
         <span class="proj-venue">Independent Research</span>
         <div class="proj-name">SeMemo &mdash; Visual Memory Dataset</div>
@@ -708,7 +856,7 @@
         <div class="proj-tags"><span class="tag">Generative AI</span><span class="tag">Visual Working Memory</span><span class="tag">Computer Vision</span><span class="tag">Dataset</span></div>
       </div>
 
-      <div class="proj-card fade-up">
+      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="2">
         <div class="proj-icon">&#x1F441;</div>
         <span class="proj-venue">ACM MM 2026 (Under Review)</span>
         <div class="proj-name">SALOCON &mdash; Salient Object Detection</div>
@@ -716,7 +864,7 @@
         <div class="proj-tags"><span class="tag">Saliency Detection</span><span class="tag">Scene Graphs</span><span class="tag">Kosmos-2</span><span class="tag">LLMs</span></div>
       </div>
 
-      <div class="proj-card fade-up">
+      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="3">
         <div class="proj-icon">&#x1F426;</div>
         <span class="proj-venue">SoICT 2025 (To Appear)</span>
         <div class="proj-name">AEye &mdash; Avian Monitoring System</div>
@@ -724,7 +872,7 @@
         <div class="proj-tags"><span class="tag">Object Detection</span><span class="tag">Streaming Video</span><span class="tag">PyTorch</span><span class="tag">Wildlife AI</span></div>
       </div>
 
-      <div class="proj-card fade-up">
+      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="4">
         <div class="proj-icon">&#x1F319;</div>
         <span class="proj-venue">Informatica (Under Review)</span>
         <div class="proj-name">AEye&sup2; &mdash; Hybrid Day-Night Avian Monitoring</div>
@@ -732,7 +880,7 @@
         <div class="proj-tags"><span class="tag">Hybrid Detection</span><span class="tag">Night Vision</span><span class="tag">Wildlife AI</span><span class="tag">Deep Learning</span></div>
       </div>
 
-      <div class="proj-card fade-up">
+      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="5">
         <div class="proj-icon">&#x1F3D8;</div>
         <span class="proj-venue">SoICT 2025 (To Appear)</span>
         <div class="proj-name">Multi-modal House Price Prediction</div>
@@ -740,7 +888,7 @@
         <div class="proj-tags"><span class="tag">Multi-modal Fusion</span><span class="tag">XGBoost</span><span class="tag">Neural Networks</span><span class="tag">Computer Vision</span></div>
       </div>
 
-      <div class="proj-card fade-up">
+      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="6">
         <div class="proj-icon">&#x1F4F1;</div>
         <span class="proj-venue">Android Application</span>
         <div class="proj-name">Timesheet Tracker</div>
@@ -749,7 +897,7 @@
         <div class="proj-tags"><span class="tag">Kotlin</span><span class="tag">Android Studio</span><span class="tag">Mobile Development</span><span class="tag">Privacy-First</span><span class="tag">Productivity</span></div>
       </div>
 
-      <div class="proj-card proj-hidden fade-up">
+      <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="7">
         <div class="proj-icon">&#x1FA91;</div>
         <span class="proj-venue">Informatica (Under Review)</span>
         <div class="proj-name">Furniture Matters &mdash; Interior-Aware Valuation</div>
@@ -757,7 +905,7 @@
         <div class="proj-tags"><span class="tag">Interior Analysis</span><span class="tag">Computer Vision</span><span class="tag">Real Estate AI</span><span class="tag">Multi-modal</span></div>
       </div>
 
-      <div class="proj-card proj-hidden fade-up">
+      <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="8">
         <div class="proj-icon">&#x1F6F5;</div>
         <span class="proj-venue">SoICT 2024 &mdash; Published</span>
         <div class="proj-name">Motorcycle Helmet Detection</div>
@@ -765,7 +913,7 @@
         <div class="proj-tags"><span class="tag">Object Detection</span><span class="tag">Traffic Safety</span><span class="tag">OpenCV</span><span class="tag">Benchmarking</span></div>
       </div>
 
-      <div class="proj-card proj-hidden fade-up">
+      <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="9">
         <div class="proj-icon">&#x1F4CA;</div>
         <span class="proj-venue">SoICT 2024 &mdash; Published</span>
         <div class="proj-name">Motion Analysis in Static Images (MISS)</div>
@@ -982,7 +1130,7 @@
         card.style.animationDelay = (i * 80) + 'ms';
         observer.observe(card);
         // Initialize tilt effect for newly revealed card
-        card.addEventListener('mousemove', (e) => {
+        const onMouseMove = (e) => {
           const rect = card.getBoundingClientRect();
           const x = (e.clientX - rect.left) / rect.width - 0.5;
           const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -992,14 +1140,18 @@
           const shadowX = x * 12;
           const shadowY = y * 12;
           card.style.boxShadow = `${shadowX}px ${shadowY}px 24px rgba(0,0,0,0.2)`;
-        });
-        card.addEventListener('mouseleave', () => {
+        };
+        const onMouseLeave = () => {
           card.style.transform = '';
           card.style.boxShadow = '';
-        });
+        };
+        card.addEventListener('mousemove', onMouseMove);
+        card.addEventListener('mouseleave', onMouseLeave);
       } else {
         card.classList.remove('proj-visible');
         card.style.animationDelay = '';
+        card.removeEventListener('mousemove', onMouseMove);
+        card.removeEventListener('mouseleave', onMouseLeave);
       }
     });
 
@@ -1152,13 +1304,13 @@
     'use strict';
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
-    if (prefersReduced || isMobile) return;
 
     function initEnhancements() {
+      if (prefersReduced || isMobile) return;
       initHeroScene();
+      initParticleNetwork();
       initCardTilt();
       initParallax();
-      initScrollObservers();
     }
 
     if (typeof THREE === 'undefined') {
@@ -1295,89 +1447,117 @@
       }, { passive: true });
     }
 
-    function initHeroScene() {
+    /* ── [NEW] Particle Network Background ─────────────── */
+    function initParticleNetwork() {
       const container = document.getElementById('hero-3d-container');
       if (!container) return;
-
-      const scene = new THREE.Scene();
-      scene.background = null;
-      
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
-      camera.position.z = 50;
-
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, premultipliedAlpha: false });
-      renderer.setClearColor(0x000000, 0);
-      renderer.setSize(w, h);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      container.appendChild(renderer.domElement);
-
-      // Create a wider terrain mesh to fill the screen
-      const geometry = new THREE.PlaneGeometry(100, 60, 40, 40);
-      const material = new THREE.MeshBasicMaterial({
-        color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00d4aa',
-        wireframe: true,
-        transparent: true,
-        opacity: 0.15
-      });
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.rotation.x = -Math.PI / 3;
-      scene.add(mesh);
-
-      const originalPositions = geometry.attributes.position.array.slice();
-
-      let mouseX = 0, mouseY = 0;
-      document.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-      }, { passive: true });
-
+      const canvas = document.createElement('canvas');
+      container.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const particleCount = 80;
+      const connectionDist = 150;
+      let mouse = { x: null, y: null };
       let animationId;
+
+      function resize() {
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+          this.radius = Math.random() * 1.5 + 0.5;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        }
+        draw() {
+          const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00d4aa';
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = accent;
+          ctx.globalAlpha = 0.6;
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      container.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
       function animate() {
         animationId = requestAnimationFrame(animate);
-        const positions = geometry.attributes.position.array;
-        const time = Date.now() * 0.001;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        for (let i = 0; i < positions.length; i += 3) {
-          const x = originalPositions[i];
-          const y = originalPositions[i + 1];
-          // Ripple effect
-          const z = Math.sin(x * 0.5 + time) * Math.cos(y * 0.5 + time) * 2;
-          // Mouse interaction
-          const mouseZ = Math.sin((x - mouseX * 30) * 0.2 + time) * Math.cos((y - mouseY * 30) * 0.2 + time) * 2;
-          positions[i + 2] = z + mouseZ;
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < connectionDist) {
+              const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00d4aa';
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = accent;
+              ctx.globalAlpha = (1 - dist / connectionDist) * 0.3;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
         }
-        geometry.attributes.position.needsUpdate = true;
 
-        camera.position.x += (mouseX * 5 - camera.position.x) * 0.05;
-        camera.position.y += (-mouseY * 5 - camera.position.y) * 0.05;
-        camera.lookAt(scene.position);
-        renderer.render(scene, camera);
+        // Mouse interaction
+        if (mouse.x !== null) {
+          particles.forEach(p => {
+            const dx = mouse.x - p.x;
+            const dy = mouse.y - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 200) {
+              const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00d4aa';
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.strokeStyle = accent;
+              ctx.globalAlpha = (1 - dist / 200) * 0.2;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          });
+        }
       }
       animate();
 
-      window.addEventListener('resize', () => {
-        const w = container.clientWidth;
-        const h = container.clientHeight;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-      });
-
-      let disposed = false;
+      // Pause when hero is out of view
       const sceneObserver = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) {
           cancelAnimationFrame(animationId);
-          if (!disposed) {
-            renderer.dispose();
-            container.removeChild(renderer.domElement);
-            disposed = true;
-          }
-        } else if (disposed) {
-          disposed = false;
-          container.appendChild(renderer.domElement);
-          animate();
         } else {
           animate();
         }
@@ -1385,44 +1565,160 @@
       sceneObserver.observe(container);
     }
 
-    function initCardTilt() {
-      const cards = document.querySelectorAll('.proj-card:not(.proj-hidden), .pub-card, .about-card, .skill-group');
-      cards.forEach(card => {
-        card.classList.add('tilt-card');
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = (e.clientX - rect.left) / rect.width - 0.5;
-          const y = (e.clientY - rect.top) / rect.height - 0.5;
-          const tiltX = y * -8;
-          const tiltY = x * 8;
-          card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(6px)`;
-          const shadowX = x * 12;
-          const shadowY = y * 12;
-          card.style.boxShadow = `${shadowX}px ${shadowY}px 24px rgba(0,0,0,0.2)`;
-        });
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = '';
-          card.style.boxShadow = '';
-        });
+    /* ── [NEW] Cycling Hero Tagline ────────────────────── */
+    function initCyclingTagline() {
+      const heroDesc = document.querySelector('.hero-desc');
+      if (!heroDesc) return;
+
+      const taglines = [
+        { emphasis: 'see', full: 'I build AI systems that <strong>see</strong>, understand, and remember.' },
+        { emphasis: 'understand', full: 'I build AI systems that see, <strong>understand</strong>, and remember.' },
+        { emphasis: 'remember', full: 'I build AI systems that see, understand, and <strong>remember</strong>.' },
+        { emphasis: 'create', full: 'I build AI systems that see, understand, and <strong>create</strong>.' },
+        { emphasis: 'interpret', full: 'I build AI systems that see, understand, and <strong>interpret</strong>.' }
+      ];
+
+      let currentIndex = 0;
+      let interval;
+
+      function cycleTagline() {
+        currentIndex = (currentIndex + 1) % taglines.length;
+        const tagline = taglines[currentIndex];
+        heroDesc.innerHTML = tagline.full + ' PhD researcher in Computer Vision at the University of Dayton — publishing at <strong>ACM Multimedia</strong> and international venues. Specializing in generative AI, multi-modal fusion, and scene understanding.';
+      }
+
+      // Start cycling after initial display
+      setTimeout(() => {
+        interval = setInterval(cycleTagline, 4000);
+      }, 5000);
+
+      // Pause on hover
+      heroDesc.addEventListener('mouseenter', () => clearInterval(interval));
+      heroDesc.addEventListener('mouseleave', () => {
+        interval = setInterval(cycleTagline, 4000);
       });
     }
 
-    function initParallax() {
-      const layer = document.getElementById('bg-depth-layer');
-      if (!layer) return;
+    /* ── [NEW] Citation Counter ────────────────────────── */
+    async function initCitationCounter() {
+      const citationEl = document.getElementById('citationCount');
+      if (!citationEl) return;
+
+      // Method 1: Try Semantic Scholar API
+      try {
+        const response = await fetch('https://api.semanticscholar.org/graph/v1/author/search?query=Kunal%20Agrawal%20University%20of%20Dayton&limit=1&fields=name,citationCount,externalIds');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.total > 0 && data.data[0].citationCount > 0) {
+            citationEl.textContent = data.data[0].citationCount.toLocaleString();
+            return;
+          }
+        }
+      } catch (err) {
+        // Semantic Scholar failed — try method 2
+      }
+
+      // Method 2: Parse Google Scholar meta tag (no CORS issues)
+      try {
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          const match = metaDesc.content.match(/(?:Cited by|Cited&nbsp;by)\s*([0-9,]+)/i);
+          if (match) {
+            citationEl.textContent = parseInt(match[1].replace(/,/g, ''), 10).toLocaleString();
+            return;
+          }
+        }
+      } catch (err) {
+        // Meta parsing failed
+      }
+
+      // Method 3: Hardcoded fallback
+      const CITATION_COUNT = 12; // ← UPDATE THIS when needed
+      citationEl.textContent = CITATION_COUNT.toLocaleString();
+    }
+
+    /* ── Initialize new features on load ───────────────── */
+    (function initNewFeatures() {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
+
+      if (prefersReduced || isMobile) return;
+
+      if (typeof THREE === 'undefined') {
+        window.addEventListener('load', () => {
+          initParticleNetwork();
+          initCyclingTagline();
+          initCitationCounter();
+        });
+      } else {
+        initParticleNetwork();
+        initCyclingTagline();
+        initCitationCounter();
+      }
+    })();
+  })();
+
+    /* ── READING PROGRESS BAR ──────────────────────────── */
+    (function initReadingProgress() {
+      const bar = document.getElementById('reading-progress');
+      if (!bar) return;
       let ticking = false;
       window.addEventListener('scroll', () => {
         if (!ticking) {
           window.requestAnimationFrame(() => {
-            const scrollY = window.scrollY;
-            layer.style.transform = `translateZ(0) scale(1.1) translateY(${scrollY * 0.15}px)`;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            bar.style.width = progress + '%';
             ticking = false;
           });
           ticking = true;
         }
-      }, { passive: true });
+      });
+    })();
+
+    /* ── PROJECT MODAL ─────────────────────────────────── */
+    function openProjectModal(el) {
+      const card = el.closest('.proj-card');
+      if (!card) return;
+
+      const icon = card.querySelector('.proj-icon')?.textContent || '';
+      const venue = card.querySelector('.proj-venue')?.textContent || '';
+      const name = card.querySelector('.proj-name')?.textContent || '';
+      const desc = card.querySelector('.proj-desc')?.innerHTML || '';
+      const tags = card.querySelectorAll('.proj-tags .tag');
+
+      document.getElementById('modal-title').textContent = name;
+      document.getElementById('modal-venue').textContent = venue;
+      document.getElementById('modal-body').innerHTML = `<p>${icon} ${desc}</p>`;
+
+      const tagsEl = document.getElementById('modal-tags');
+      tagsEl.innerHTML = '';
+      tags.forEach(t => {
+        const span = document.createElement('span');
+        span.style.cssText = "font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); background: rgba(0,212,170,0.08); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(0,212,170,0.15);";
+        span.textContent = t.textContent;
+        tagsEl.appendChild(span);
+      });
+
+      document.getElementById('project-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
-  })();
+
+    function closeProjectModal() {
+      document.getElementById('project-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('project-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeProjectModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeProjectModal();
+    });
+
+    /* ── THREE.JS ALREADY LOADED VIA CDN ───────────────── */
 </script>
 </body>
 </html>
