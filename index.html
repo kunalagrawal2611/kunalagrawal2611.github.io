@@ -213,25 +213,6 @@
     .about-card.award-card:hover { background: rgba(245,158,11,0.09); }
     .about-card.award-card .about-card-title { color: #f59e0b; }
 
-    /* ── EXPERIENCE ───────────────────────────────────────── */
-    #experience { padding: 8rem 4rem; background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
-    .exp-inner { max-width: 1200px; margin: 0 auto; }
-    .timeline { display: flex; flex-direction: column; }
-    .timeline-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border2); }
-    .timeline-item:last-child { border-bottom: none; }
-    .tl-date { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--text3); padding-top: 0.4rem; letter-spacing: 0.05em; line-height: 1.6; }
-    .tl-date span { display: block; color: var(--accent); margin-bottom: 0.3rem; font-size: 0.72rem; }
-    .tl-role { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
-    .tl-org { font-size: 0.88rem; color: var(--accent); margin-bottom: 0.2rem; font-family: 'DM Mono', monospace; }
-    .tl-award { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; color: #f59e0b; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 4px; padding: 3px 10px; margin: 0.5rem 0 0.8rem; font-family: 'DM Mono', monospace; }
-    .tl-award::before { content: '★'; font-size: 0.65rem; }
-    .tl-bullets { list-style: none; margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.6rem; }
-    .tl-bullets li { font-size: 0.9rem; color: var(--text2); padding-left: 1.2rem; position: relative; line-height: 1.7; font-weight: 300; }
-    .tl-bullets li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: 0.6; }
-    .tl-bullets li strong { color: var(--text); font-weight: 500; }
-
-
-
     /* ── EXPERIENCE / TIMELINE ─────────────────────────── */
     #experience { padding: 8rem 4rem; background: var(--bg2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
     .exp-inner { max-width: 1200px; margin: 0 auto; }
@@ -615,7 +596,7 @@
   </div>
 </nav>
 
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="menu">
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" role="navigation">
   <a href="#about" onclick="closeMobileMenu()" role="menuitem">About</a>
   <a href="#experience" onclick="closeMobileMenu()" role="menuitem">Experience</a>
   <a href="#publications" onclick="closeMobileMenu()" role="menuitem">Publications</a>
@@ -1235,13 +1216,18 @@
           card.style.transform = '';
           card.style.boxShadow = '';
         };
+        // Store handler references on the card so removal always finds the exact function
+        card._tiltHandlers = { onMouseMove, onMouseLeave };
         card.addEventListener('mousemove', onMouseMove);
         card.addEventListener('mouseleave', onMouseLeave);
       } else {
         card.classList.remove('proj-visible');
         card.style.animationDelay = '';
-        card.removeEventListener('mousemove', onMouseMove);
-        card.removeEventListener('mouseleave', onMouseLeave);
+        if (card._tiltHandlers) {
+          card.removeEventListener('mousemove', card._tiltHandlers.onMouseMove);
+          card.removeEventListener('mouseleave', card._tiltHandlers.onMouseLeave);
+          delete card._tiltHandlers;
+        }
       }
     });
 
@@ -1409,10 +1395,21 @@
       initParallax();
     }
 
+    // Citation counter & tagline cycling run on all devices (not blocked by mobile check)
+    function initCitationAndTagline() {
+      if (prefersReduced) return;
+      initCyclingTagline();
+      initCitationCounter();
+    }
+
     if (typeof THREE === 'undefined') {
-      window.addEventListener('load', initEnhancements);
+      window.addEventListener('load', () => {
+        initEnhancements();
+        initCitationAndTagline();
+      });
     } else {
       initEnhancements();
+      initCitationAndTagline();
     }
 
     function initHeroScene() {
@@ -1667,11 +1664,11 @@
       if (!heroDesc) return;
 
       const taglines = [
-        { emphasis: 'see', full: 'I build AI systems that <strong>see</strong>, understand, and remember.' },
-        { emphasis: 'understand', full: 'I build AI systems that see, <strong>understand</strong>, and remember.' },
-        { emphasis: 'remember', full: 'I build AI systems that see, understand, and <strong>remember</strong>.' },
-        { emphasis: 'create', full: 'I build AI systems that see, understand, and <strong>create</strong>.' },
-        { emphasis: 'interpret', full: 'I build AI systems that see, understand, and <strong>interpret</strong>.' }
+        'I build AI systems that <strong>see</strong>, understand, and remember.',
+        'I build AI systems that see, <strong>understand</strong>, and remember.',
+        'I build AI systems that see, understand, and <strong>remember</strong>.',
+        'I build AI systems that see, understand, and <strong>create</strong>.',
+        'I build AI systems that see, understand, and <strong>interpret</strong>.'
       ];
 
       let currentIndex = 0;
@@ -1680,7 +1677,7 @@
       function cycleTagline() {
         currentIndex = (currentIndex + 1) % taglines.length;
         const tagline = taglines[currentIndex];
-        heroDesc.innerHTML = tagline.full + ' PhD researcher in Computer Vision at the University of Dayton — publishing at <strong>ACM Multimedia</strong> and international venues. Specializing in generative AI, multi-modal fusion, and scene understanding.';
+        heroDesc.innerHTML = tagline + ' PhD researcher in Computer Vision at the University of Dayton — publishing at <strong>ACM Multimedia</strong> and international venues. Specializing in generative AI, multi-modal fusion, and scene understanding.';
       }
 
       // Start cycling after initial display
@@ -1732,26 +1729,6 @@
       const CITATION_COUNT = 12; // ← UPDATE THIS when needed
       citationEl.textContent = CITATION_COUNT.toLocaleString();
     }
-
-    /* ── Initialize new features on load ───────────────── */
-    (function initNewFeatures() {
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
-
-      if (prefersReduced || isMobile) return;
-
-      if (typeof THREE === 'undefined') {
-        window.addEventListener('load', () => {
-          initParticleNetwork();
-          initCyclingTagline();
-          initCitationCounter();
-        });
-      } else {
-        initParticleNetwork();
-        initCyclingTagline();
-        initCitationCounter();
-      }
-    })();
   })();
 
     /* ── READING PROGRESS BAR ──────────────────────────── */
@@ -1786,7 +1763,7 @@
 
       document.getElementById('modal-title').textContent = name;
       document.getElementById('modal-venue').textContent = venue;
-      document.getElementById('modal-body').innerHTML = `<p>${icon} ${desc}</p>`;
+      document.getElementById('modal-body').innerHTML = `<div style="line-height:1.8">${icon} ${desc}</div>`;
 
       const tagsEl = document.getElementById('modal-tags');
       tagsEl.innerHTML = '';
