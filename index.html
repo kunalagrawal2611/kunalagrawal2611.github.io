@@ -912,7 +912,7 @@
         <div class="proj-tags"><span class="tag">Object Detection</span><span class="tag">Streaming Video</span><span class="tag">PyTorch</span><span class="tag">Wildlife AI</span></div>
       </div>
 
-      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="4">
+      <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="4">
         <div class="proj-icon">&#x1F319;</div>
         <span class="proj-venue">Informatica (Under Review)</span>
         <div class="proj-name">AEye&sup2; &mdash; Hybrid Day-Night Avian Monitoring</div>
@@ -945,6 +945,15 @@
         <div class="proj-tags"><span class="tag">Interior Analysis</span><span class="tag">Computer Vision</span><span class="tag">Real Estate AI</span><span class="tag">Multi-modal</span></div>
       </div>
 
+      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="10">
+        <div class="proj-icon">&#x1F9E1;</div>
+        <span class="proj-venue">Open Source — Claude Code-Style UI</span>
+        <div class="proj-name">Ollama Dashboard — Local AI Agent</div>
+        <div class="proj-desc">A self-hosted, Claude Code-style coding assistant UI with agentic tool-use loop: file read/write, shell execution (with safety blocklist), git operations, web fetching, sub-agent spawning, and multi-agent team collaboration. Built with Next.js 15 + Hono + TypeScript, featuring SSE streaming, markdown rendering, and a dark terminal-inspired interface.<br><br>
+        <a href="https://github.com/kunalagrawal2611/ollama-dashboard" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em;">VIEW ON GITHUB &rarr;</a></div>
+        <div class="proj-tags"><span class="tag">Next.js 15</span><span class="tag">Hono</span><span class="tag">TypeScript</span><span class="tag">Ollama</span><span class="tag">SSE</span><span class="tag">Multi-Agent</span><span class="tag">Open Source</span></div>
+      </div>
+
       <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="8">
         <div class="proj-icon">&#x1F6F5;</div>
         <span class="proj-venue">SoICT 2024 &mdash; Published</span>
@@ -965,7 +974,7 @@
 
     <div class="proj-toggle-wrap">
       <button class="btn-proj-toggle" id="projToggle" onclick="toggleProjects()">
-        <span id="projToggleLabel">Show 3 more projects</span>
+        <span id="projToggleLabel">Show 4 more projects</span>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" id="projToggleIcon"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
