@@ -11,11 +11,22 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kunal Agrawal is a PhD Researcher in Computer Vision at the University of Dayton, specializing in generative AI, multi-modal fusion, and scene understanding.">
-  <meta property="og:title" content="Kunal Agrawal — Computer Vision Researcher">
-  <meta property="og:description" content="Portfolio and research publications of Kunal Agrawal.">
+  <meta name="description" content="Kunal Agrawal — PhD Computer Vision researcher (UDayton, 3.96 GPA). 11 publications, AWS Certified. Seeking ML Engineer, CV Research, and Applied AI roles. Generative AI, multi-modal fusion, scene understanding.">
+  <meta name="author" content="Kunal Agrawal">
+  <meta name="keywords" content="Kunal Agrawal, computer vision, machine learning, PhD researcher, generative AI, University of Dayton">
+  <meta property="og:title" content="Kunal Agrawal — Computer Vision Researcher &amp; ML Builder">
+  <meta property="og:description" content="11 publications · AWS Certified · Open to ML Engineering &amp; Applied AI roles. PhD researcher building systems that see, understand, and remember.">
   <meta property="og:type" content="website">
-  <title>Kunal Agrawal — Computer Vision Researcher</title>
+  <meta property="og:url" content="https://kunalagrawal2611.github.io/">
+  <meta property="og:image" content="https://kunalagrawal2611.github.io/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kunal Agrawal — Computer Vision Researcher">
+  <meta name="twitter:description" content="PhD researcher · 11 publications · AWS Certified · Open to opportunities">
+  <meta name="twitter:image" content="https://kunalagrawal2611.github.io/og-image.svg">
+  <title>Kunal Agrawal — Computer Vision Researcher &amp; ML Builder</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png">
   <script type="application/ld+json">
   {
@@ -29,11 +40,15 @@
       {"@type": "CollegeOrUniversity", "name": "University of Dayton"},
       {"@type": "CollegeOrUniversity", "name": "Shri Ramdeobaba College of Engineering and Management"}
     ],
+    "email": "kunalagarwal2611@gmail.com",
+    "telephone": "+1-937-993-2108",
     "sameAs": [
+      "https://github.com/kunalagrawal2611",
       "https://www.linkedin.com/in/kunal-agrawal-phd/",
       "https://scholar.google.com/citations?user=4hveYIAAAAAJ",
       "https://www.researchgate.net/profile/Kunal-Agrawal-6"
-    ]
+    ],
+    "knowsAbout": ["Computer Vision", "Generative AI", "Multi-modal Data Fusion", "Deep Learning", "Machine Learning"]
   }
   </script>
   <link rel="canonical" href="https://kunalagrawal2611.github.io/">
@@ -562,9 +577,68 @@
       .tilt-card { transform: none !important; box-shadow: none !important; }
     }
 
+    .skip-link {
+      position: absolute; top: -100px; left: 1rem; z-index: 500;
+      padding: 0.65rem 1rem; background: var(--accent); color: #000;
+      font-family: 'DM Mono', monospace; font-size: 0.75rem; text-decoration: none;
+      border-radius: 6px; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 1rem; outline: 2px solid var(--text); outline-offset: 2px; }
+
+    .hire-banner {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem;
+    }
+    .hire-pill {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 5px 12px; border-radius: 100px;
+      border: 1px solid var(--border); background: rgba(0,212,170,0.06); color: var(--accent);
+    }
+    .hero-target {
+      font-size: 0.95rem; color: var(--text2); margin-bottom: 1.25rem; max-width: 620px; font-weight: 400;
+    }
+    .hero-target strong { color: var(--text); font-weight: 600; }
+
+    .pub-links { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.85rem; }
+    .pub-link {
+      font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 4px;
+      border: 1px solid var(--border); color: var(--accent); text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .pub-link:hover { background: rgba(0,212,170,0.1); border-color: var(--accent); }
+
+    .proj-card[role="button"] { text-align: left; width: 100%; font: inherit; color: inherit; }
+    .proj-card[role="button"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .proj-section-note { font-size: 0.95rem; color: var(--text2); margin: -1.5rem 0 2.5rem; max-width: 680px; font-weight: 300; }
+
+    .skill-evidence { font-size: 0.78rem; color: var(--text3); margin-left: auto; font-family: 'DM Mono', monospace; white-space: nowrap; }
+    .skill-item.evidence-row { justify-content: space-between; gap: 1rem; }
+
+    .value-strip {
+      padding: 3rem 4rem; background: var(--bg2); border-top: 1px solid var(--border2);
+      border-bottom: 1px solid var(--border2);
+    }
+    .value-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .value-card { padding: 1.25rem 1.4rem; background: var(--surface); border: 1px solid var(--border2); border-radius: 10px; }
+    .value-num { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--accent); line-height: 1; margin-bottom: 0.35rem; }
+    .value-label { font-size: 0.82rem; color: var(--text2); line-height: 1.5; }
+    @media (max-width: 900px) {
+      .value-strip { padding: 3rem 1.5rem; }
+      .value-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px) {
+      .value-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-decode] { opacity: 1 !important; }
+      html { scroll-behavior: auto; }
+    }
+
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <!-- Reading Progress Bar -->
   <div id="reading-progress"></div>
 
@@ -609,9 +683,16 @@
 <section id="hero">
   <!-- [ENHANCEMENT] 3D Scene Graph Container -->
   <div id="hero-3d-container" aria-hidden="true"></div>
-  <div class="hero-inner">
+  <div class="hero-inner" id="main-content">
     <div class="hero-tag" id="heroTag">PhD Researcher &middot; Dayton, OH &middot; Open to Opportunities</div>
+    <div class="hire-banner" aria-label="Target roles">
+      <span class="hire-pill">ML Engineer</span>
+      <span class="hire-pill">Computer Vision Research</span>
+      <span class="hire-pill">Applied AI</span>
+      <span class="hire-pill">AWS Certified</span>
+    </div>
     <h1 class="hero-name" data-decode>Kunal<br><em>Agrawal</em></h1>
+    <p class="hero-target"><strong>Available for full-time roles</strong> starting May 2027 (or earlier internships). I ship research into production-ready AI — from 60k+ image healthcare pipelines to agentic coding tools.</p>
     <p class="hero-desc">I build AI systems that <strong>see, understand, and remember.</strong> PhD researcher in Computer Vision at the University of Dayton — publishing at <strong>ACM Multimedia</strong> and international venues. Specializing in generative AI, multi-modal fusion, and scene understanding.</p>
     <div class="hero-cta">
       <a href="#publications" class="btn-primary">View Research</a>
@@ -628,8 +709,28 @@
         <div class="stat-num" id="citationCount">—</div>
         <div class="stat-label">Citations</div>
       </div>
-      <div><div class="stat-num">3.96</div><div class="stat-label">PhD GPA</div></div>
-      <div><div class="stat-num">4.00</div><div class="stat-label">Masters GPA</div></div>
+      <div><div class="stat-num">AWS</div><div class="stat-label">Cloud Certified</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="value-strip" aria-label="Impact highlights">
+  <div class="value-inner">
+    <div class="value-card fade-up">
+      <div class="value-num">60k+</div>
+      <div class="value-label">Medical images processed in clinical CV pipeline (Singapore hospital internship)</div>
+    </div>
+    <div class="value-card fade-up">
+      <div class="value-num">10k+</div>
+      <div class="value-label">Annotated images &amp; 5,000 hrs video curated for real-time detection systems</div>
+    </div>
+    <div class="value-card fade-up">
+      <div class="value-num">89%</div>
+      <div class="value-label">Accuracy on traffic video anomaly detection (masters research)</div>
+    </div>
+    <div class="value-card fade-up">
+      <div class="value-num">Lead</div>
+      <div class="value-label">Python lab instructor, peer reviewer, and graduate student mentor at UD</div>
     </div>
   </div>
 </section>
@@ -639,8 +740,8 @@
   <h2 class="section-title fade-up" data-decode>The researcher<br>behind the work</h2>
   <div class="about-grid">
     <div class="about-text fade-up">
-      <p>I am a Computer Science PhD candidate at the <strong>University of Dayton</strong>, working in the Vision and Mixed Reality Lab under Dr. Tam Nguyen. My research sits at the intersection of deep learning, generative AI, and human visual perception — asking questions that connect how machines see to how humans remember.</p>
-      <p>Before my PhD, I completed my <strong>Master's degree with a perfect 4.00 GPA</strong> and earned the Outstanding Graduate Student in Computer Science Award. I also completed a research internship at <strong>Tan Tock Seng Hospital in Singapore</strong>, applying computer vision to clinical medical imaging across 60,000+ images.</p>
+      <p>I am a Computer Science PhD candidate at the <strong>University of Dayton</strong> (GPA 3.96), working in the Vision and Mixed Reality Lab under Dr. Tam Nguyen. My research sits at the intersection of deep learning, generative AI, and human visual perception — connecting how machines see to how humans remember.</p>
+      <p>Before my PhD, I completed my <strong>Master's with a perfect 4.00 GPA</strong> and the Outstanding Graduate Student in Computer Science Award. I interned at <strong>Tan Tock Seng Hospital, Singapore</strong>, building clinical CV pipelines across 60,000+ medical images. I am <strong>AWS Certified</strong> and have shipped open-source tools in TypeScript and Kotlin.</p>
       <p>I serve as <strong>Lead Instructor</strong> for Python lab sessions, peer-review submissions for international CV and ML conferences, and mentor junior graduate students through the publication pipeline. Outside the lab, I spent three years in leadership roles with Rotaract in India, serving as President and Joint Secretary.</p>
     </div>
     <div class="about-cards fade-up">
@@ -694,6 +795,18 @@
     <h2 class="section-title fade-up">Where I have worked</h2>
     <div class="timeline">
       <div class="timeline-item fade-up">
+        <div class="tl-date"><span>Simulation</span>Jan 2026</div>
+        <div class="tl-content">
+          <div class="tl-role">AI in Action Job Simulation</div>
+          <div class="tl-org">Vista Equity Partners &mdash; Remote</div>
+          <ul class="tl-bullets">
+            <li>Applied Vista's 4-part prompt engineering framework to synthesize customer NPS data into executive-ready reports, improving output clarity by <strong>over 50%</strong>.</li>
+            <li>Designed repeatable GenAI workflow automations for news aggregation, data reconciliation, and qualitative insight summarization using ChatGPT and Microsoft Copilot.</li>
+            <li>Evaluated AI outputs for accuracy and tone; implemented guardrails that reduced error rates and increased stakeholder usability.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item fade-up">
         <div class="tl-date"><span>Current</span>Aug 2025 &mdash; Present</div>
         <div class="tl-content">
           <div class="tl-role">Graduate Teaching Assistant &amp; Lead Instructor</div>
@@ -716,17 +829,6 @@
             <li>Built <strong>SALOCON</strong>, a salient object detection framework using scene graphs and Kosmos-2 for context-aware scene understanding. Under review at <strong>ACM Multimedia 2026</strong>.</li>
             <li>Engineered a multi-modal house price prediction pipeline fusing street-view imagery, interior attributes, and macro-economic data using XGBoost and Neural Networks. Accepted at SoICT 2025.</li>
             <li>Spearheaded <strong>AEye</strong>, an automated avian monitoring system processing high-resolution streaming video. Accepted at SoICT 2025.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item fade-up">
-        <div class="tl-date"><span>Simulation</span>Jan 2026</div>
-        <div class="tl-content">
-          <div class="tl-role">AI in Action Job Simulation</div>
-          <div class="tl-org">Vista Equity Partners &mdash; Remote</div>
-          <ul class="tl-bullets">
-            <li>Applied Vista's 4-part prompt engineering framework to synthesize customer NPS data into executive-ready reports, improving output clarity by over 50%.</li>
-            <li>Designed repeatable GenAI workflow automations for news aggregation, data reconciliation, and qualitative insight summarization using ChatGPT and Microsoft Copilot.</li>
           </ul>
         </div>
       </div>
@@ -759,7 +861,7 @@
 </section>
 
   <!-- Project Modal -->
-  <div class="modal-overlay" id="project-modal">
+  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
       <div class="modal-header">
@@ -787,77 +889,88 @@
       <div><span class="pub-badge badge-review">Under Review &mdash; Informatica</span>
       <div class="pub-title">Furniture Matters in House Price Valuation</div>
       <div class="pub-venue">Informatica Journal</div>
-      <div class="pub-authors">A. Yousif, <strong>K. Agrawal</strong>, B. T. Tran-Le, K. S. Kolakaluri, V. S. Patel, T. N. Le, M. T. Tran, T. V. Nguyen</div></div>
+      <div class="pub-authors">A. Yousif, <strong>K. Agrawal</strong>, B. T. Tran-Le, K. S. Kolakaluri, V. S. Patel, T. N. Le, M. T. Tran, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></div></div>
       <div class="pub-year">2026</div>
     </div>
     <div class="pub-card fade-up" data-status="review">
       <div><span class="pub-badge badge-review">Under Review &mdash; Informatica</span>
       <div class="pub-title">AEye&sup2;: Hybrid Day-Night Avian Monitoring</div>
       <div class="pub-venue">Informatica Journal</div>
-      <div class="pub-authors">K. Jamale, <strong>K. Agrawal</strong>, B. T. Tran-Le, J. Merakanapalli, S. Chousalkar, K. Li, V. S. Patel, T. N. Le, T. V. Nguyen</div></div>
+      <div class="pub-authors">K. Jamale, <strong>K. Agrawal</strong>, B. T. Tran-Le, J. Merakanapalli, S. Chousalkar, K. Li, V. S. Patel, T. N. Le, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></div></div>
       <div class="pub-year">2026</div>
     </div>
     <div class="pub-card fade-up" data-status="review">
       <div><span class="pub-badge badge-review">Under Review &mdash; ACM MM 2026</span>
       <div class="pub-title">SALOCON: Salient Object Detection in Context</div>
       <div class="pub-venue">ACM International Conference on Multimedia (ACM MM) 2026</div>
-      <div class="pub-authors"><strong>K. Agrawal</strong>, J. N. R. Merakanapalli, J. Zeng, L. Nguyen, T. N. Le, M. T. Tran, T. V. Nguyen</div></div>
+      <div class="pub-authors"><strong>K. Agrawal</strong>, J. N. R. Merakanapalli, J. Zeng, L. Nguyen, T. N. Le, M. T. Tran, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a><a class="pub-link" href="https://vantam.github.io/" target="_blank" rel="noopener">VMR Lab</a></div></div>
       <div class="pub-year">2026</div>
     </div>
     <div class="pub-card fade-up" data-status="appear">
       <div><span class="pub-badge badge-appear">To Appear &mdash; SoICT 2025</span>
       <div class="pub-title">House Price Prediction via Attribute, Visual, and Economic Features</div>
       <div class="pub-venue">International Symposium on Information and Communication Technology (SoICT) 2025</div>
-      <div class="pub-authors">A. Yousif, <strong>K. Agrawal</strong>, B. T. Tran-Le, V. Patel, T. V. Nguyen</div></div>
+      <div class="pub-authors">A. Yousif, <strong>K. Agrawal</strong>, B. T. Tran-Le, V. Patel, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></div></div>
       <div class="pub-year">2025</div>
     </div>
     <div class="pub-card fade-up" data-status="appear">
       <div><span class="pub-badge badge-appear">To Appear &mdash; SoICT 2025</span>
       <div class="pub-title">AEye: Avian Monitoring from Streaming Videos</div>
       <div class="pub-venue">International Symposium on Information and Communication Technology (SoICT) 2025</div>
-      <div class="pub-authors">K. Jamale, <strong>K. Agrawal</strong>, B. T. Tran-Le, J. Merakanapalli, S. Chousalkar, V. Patel, T. N. Le, T. V. Nguyen</div></div>
+      <div class="pub-authors">K. Jamale, <strong>K. Agrawal</strong>, B. T. Tran-Le, J. Merakanapalli, S. Chousalkar, V. Patel, T. N. Le, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></div></div>
       <div class="pub-year">2025</div>
     </div>
     <div class="pub-card fade-up" data-status="published">
       <div><span class="pub-badge badge-clinical">Published &mdash; Clinical Collaboration</span>
       <div class="pub-title">Dietary omega-3 polyunsaturated fatty acids as a protective factor of myopia: the Hong Kong Children Eye Study</div>
-      <div class="pub-venue">British Journal of Ophthalmology, vol. 110, no. 1, pp. 101-106, 2025. DOI: 10.1136/bjo-2024-326872</div>
-      <div class="pub-authors">X. J. Zhang, Y. Zhang, Y. J. Zhang, J. Yu, F. Tang, Y. Li, S. S. Yeung, K. W. Kam, <strong>K. Agrawal</strong>, N. C. Loh, P. Ip, I. C. K. Wong, W. Zhang, A. L. Young, C. C. Tham, C. P. Pang, L. J. Chen, J. C. Yam</div></div>
+      <div class="pub-venue">British Journal of Ophthalmology, vol. 110, no. 1, pp. 101-106, 2025</div>
+      <div class="pub-authors">X. J. Zhang, Y. Zhang, Y. J. Zhang, J. Yu, F. Tang, Y. Li, S. S. Yeung, K. W. Kam, <strong>K. Agrawal</strong>, N. C. Loh, P. Ip, I. C. K. Wong, W. Zhang, A. L. Young, C. C. Tham, C. P. Pang, L. J. Chen, J. C. Yam</div>
+      <div class="pub-links"><a class="pub-link" href="https://doi.org/10.1136/bjo-2024-326872" target="_blank" rel="noopener">DOI</a><a class="pub-link" href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></div></div>
       <div class="pub-year">2025</div>
     </div>
     <div class="pub-card fade-up" data-status="published">
       <div><span class="pub-badge badge-published">Published</span>
       <div class="pub-title">Towards Safer Roads: Benchmarking Object Detection Models in Complex Weather Scenarios</div>
       <div class="pub-venue">Machine Vision and Applications, vol. 36, no. 4, 2025</div>
-      <div class="pub-authors">B. T. Tran-Le, V. Patel, V. T. Huynh, M. K. Tran, <strong>K. Agrawal</strong>, M. T. Tran, T. V. Nguyen</div></div>
+      <div class="pub-authors">B. T. Tran-Le, V. Patel, V. T. Huynh, M. K. Tran, <strong>K. Agrawal</strong>, M. T. Tran, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://doi.org/10.1007/s00138-025-01709-5" target="_blank" rel="noopener">DOI</a><a class="pub-link" href="https://par.nsf.gov/servlets/purl/10646898" target="_blank" rel="noopener">PDF</a></div></div>
       <div class="pub-year">2025</div>
     </div>
     <div class="pub-card fade-up" data-status="published">
       <div><span class="pub-badge badge-published">Published</span>
       <div class="pub-title">Motorcycle Helmet Detection Benchmarking</div>
       <div class="pub-venue">SoICT 2024, pp. 203&ndash;215</div>
-      <div class="pub-authors"><strong>K. Agrawal</strong>, V. S. Patel, I. Cannon, M. T. Tran, T. V. Nguyen</div></div>
+      <div class="pub-authors"><strong>K. Agrawal</strong>, V. S. Patel, I. Cannon, M. T. Tran, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://doi.org/10.1007/978-981-96-4282-3_17" target="_blank" rel="noopener">DOI</a><a class="pub-link" href="https://par.nsf.gov/servlets/purl/10599372" target="_blank" rel="noopener">PDF</a></div></div>
       <div class="pub-year">2024</div>
     </div>
     <div class="pub-card fade-up" data-status="published">
       <div><span class="pub-badge badge-published">Published</span>
       <div class="pub-title">Motion Analysis in Static Images</div>
       <div class="pub-venue">SoICT 2024, pp. 193&ndash;202</div>
-      <div class="pub-authors"><strong>K. Agrawal</strong>, V. S. Patel, R. Tharra, T. N. Le, M. T. Tran, T. V. Nguyen</div></div>
+      <div class="pub-authors"><strong>K. Agrawal</strong>, V. S. Patel, R. Tharra, T. N. Le, M. T. Tran, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://doi.org/10.1007/978-981-96-4282-3_16" target="_blank" rel="noopener">DOI</a><a class="pub-link" href="https://par.nsf.gov/servlets/purl/10599368" target="_blank" rel="noopener">PDF</a></div></div>
       <div class="pub-year">2024</div>
     </div>
     <div class="pub-card fade-up" data-status="published">
       <div><span class="pub-badge badge-published">Published</span>
       <div class="pub-title">Image De-Photobombing Benchmark</div>
       <div class="pub-venue">Multimedia Tools and Applications, vol. 83, no. 29, pp. 73553&ndash;73568, 2024</div>
-      <div class="pub-authors">V. S. Patel, <strong>K. Agrawal</strong>, S. S. Baraheem, A. Yousif, T. V. Nguyen</div></div>
+      <div class="pub-authors">V. S. Patel, <strong>K. Agrawal</strong>, S. S. Baraheem, A. Yousif, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://doi.org/10.1007/s11042-024-19102-1" target="_blank" rel="noopener">DOI</a><a class="pub-link" href="https://link.springer.com/article/10.1007/s11042-024-19102-1" target="_blank" rel="noopener">Springer</a></div></div>
       <div class="pub-year">2024</div>
     </div>
     <div class="pub-card fade-up" data-status="published">
       <div><span class="pub-badge badge-published">Published</span>
       <div class="pub-title">A Comprehensive Analysis of Object Detectors in Adverse Weather Conditions</div>
       <div class="pub-venue">58th Annual Conference on Information Sciences and Systems (CISS), pp. 1&ndash;6, 2024</div>
-      <div class="pub-authors">V. S. Patel, <strong>K. Agrawal</strong>, T. V. Nguyen</div></div>
+      <div class="pub-authors">V. S. Patel, <strong>K. Agrawal</strong>, T. V. Nguyen</div>
+      <div class="pub-links"><a class="pub-link" href="https://par.nsf.gov/servlets/purl/10521809" target="_blank" rel="noopener">PDF</a><a class="pub-link" href="https://par.nsf.gov/biblio/10521809" target="_blank" rel="noopener">NSF PAR</a></div></div>
       <div class="pub-year">2024</div>
     </div>
   </div>
@@ -868,88 +981,89 @@
   <div class="proj-inner">
     <div class="section-label">Projects</div>
     <h2 class="section-title fade-up">What I have built</h2>
+    <p class="proj-section-note fade-up">Open-source products and deployable research systems — see <a href="#publications" style="color:var(--accent);">Publications</a> for the full paper record.</p>
     <div class="proj-grid" id="projGrid">
 
-      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="1">
-        <div class="proj-icon">&#x1F9E0;</div>
-        <span class="proj-venue">Independent Research</span>
-        <div class="proj-name">SeMemo &mdash; Visual Memory Dataset</div>
-        <div class="proj-desc">A Generative AI-powered dataset that isolates semantic content from low-level visual features to study how humans form and retain visual memories via a change detection paradigm.</div>
-        <div class="proj-tags"><span class="tag">Generative AI</span><span class="tag">Visual Working Memory</span><span class="tag">Computer Vision</span><span class="tag">Dataset</span></div>
+      <div class="proj-card fade-up" role="button" tabindex="0" data-project="10" aria-label="Open Ollama Dashboard project details">
+        <div class="proj-icon">&#x1F9E1;</div>
+        <span class="proj-venue">Open Source — Shipped Product</span>
+        <div class="proj-name">Ollama Dashboard — Local AI Agent</div>
+        <div class="proj-desc">Self-hosted coding assistant with agentic tool-use: file I/O, shell (safety blocklist), git, web fetch, sub-agents, and multi-agent teams. Next.js 15 + Hono + TypeScript, SSE streaming.<br><br>
+        <a href="https://github.com/kunalagrawal2611/ollama-dashboard" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color: var(--accent); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em;">VIEW ON GITHUB &rarr;</a></div>
+        <div class="proj-tags"><span class="tag">Next.js 15</span><span class="tag">TypeScript</span><span class="tag">Agentic AI</span><span class="tag">Open Source</span></div>
       </div>
 
-      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="2">
+      <div class="proj-card fade-up" role="button" tabindex="0" data-project="6" aria-label="Open Timesheet Tracker project details">
+        <div class="proj-icon">&#x1F4F1;</div>
+        <span class="proj-venue">Android — Shipped Product</span>
+        <div class="proj-name">Timesheet Tracker</div>
+        <div class="proj-desc">Privacy-first Kotlin app: clock in/out, manual entries, trends, CSV/PDF export, JSON backup. Zero cloud, zero login.<br><br>
+        <a href="https://github.com/kunalagrawal2611/timesheet-tracker" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color: var(--accent); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em;">VIEW ON GITHUB &rarr;</a></div>
+        <div class="proj-tags"><span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">Privacy-First</span></div>
+      </div>
+
+      <div class="proj-card fade-up" role="button" tabindex="0" data-project="1" aria-label="Open SeMemo project details">
+        <div class="proj-icon">&#x1F9E0;</div>
+        <span class="proj-venue">Research System — Dataset Pipeline</span>
+        <div class="proj-name">SeMemo — Visual Memory Dataset</div>
+        <div class="proj-desc">Generative AI pipeline disentangling semantic content from visual features for Visual Working Memory — with human change-detection evaluation built in.</div>
+        <div class="proj-tags"><span class="tag">Generative AI</span><span class="tag">VWM</span><span class="tag">Dataset Engineering</span></div>
+      </div>
+
+      <div class="proj-card fade-up" role="button" tabindex="0" data-project="2" aria-label="Open SALOCON project details">
         <div class="proj-icon">&#x1F441;</div>
         <span class="proj-venue">ACM MM 2026 (Under Review)</span>
-        <div class="proj-name">SALOCON &mdash; Salient Object Detection</div>
-        <div class="proj-desc">Context-aware salient object detection framework leveraging scene graphs and large-scale vision-language models (Kosmos-2) for advanced scene understanding beyond pixel-level features.</div>
-        <div class="proj-tags"><span class="tag">Saliency Detection</span><span class="tag">Scene Graphs</span><span class="tag">Kosmos-2</span><span class="tag">LLMs</span></div>
+        <div class="proj-name">SALOCON — Salient Object Detection</div>
+        <div class="proj-desc">Scene-graph + Kosmos-2 VLM pipeline for context-aware saliency beyond pixel-level detection.</div>
+        <div class="proj-tags"><span class="tag">Scene Graphs</span><span class="tag">Kosmos-2</span><span class="tag">PyTorch</span></div>
       </div>
 
-      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="3">
+      <div class="proj-card fade-up" role="button" tabindex="0" data-project="3" aria-label="Open AEye project details">
         <div class="proj-icon">&#x1F426;</div>
-        <span class="proj-venue">SoICT 2025 (To Appear)</span>
-        <div class="proj-name">AEye &mdash; Avian Monitoring System</div>
-        <div class="proj-desc">Specialized deep learning framework for automated real-time avian species monitoring using high-resolution streaming video data analysis for wildlife conservation applications.</div>
-        <div class="proj-tags"><span class="tag">Object Detection</span><span class="tag">Streaming Video</span><span class="tag">PyTorch</span><span class="tag">Wildlife AI</span></div>
+        <span class="proj-venue">SoICT 2025 — Production CV</span>
+        <div class="proj-name">AEye — Avian Monitoring System</div>
+        <div class="proj-desc">Real-time species detection on high-resolution streaming video for wildlife conservation — built for continuous deployment.</div>
+        <div class="proj-tags"><span class="tag">Streaming Video</span><span class="tag">Object Detection</span><span class="tag">Wildlife AI</span></div>
       </div>
 
-      <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="4">
+      <div class="proj-card fade-up" role="button" tabindex="0" data-project="5" aria-label="Open House Price Prediction project details">
+        <div class="proj-icon">&#x1F3D8;</div>
+        <span class="proj-venue">SoICT 2025 — ML Pipeline</span>
+        <div class="proj-name">Multi-modal House Price Prediction</div>
+        <div class="proj-desc">Fusion of street-view imagery, interior attributes, and macro-economic signals via XGBoost + neural models.</div>
+        <div class="proj-tags"><span class="tag">Multi-modal</span><span class="tag">XGBoost</span><span class="tag">MLOps-ready</span></div>
+      </div>
+
+      <div class="proj-card proj-hidden fade-up" role="button" tabindex="0" data-project="4" aria-label="Open AEye squared project details">
         <div class="proj-icon">&#x1F319;</div>
         <span class="proj-venue">Informatica (Under Review)</span>
         <div class="proj-name">AEye&sup2; &mdash; Hybrid Day-Night Avian Monitoring</div>
-        <div class="proj-desc">Extended avian monitoring system combining daytime and nighttime detection into a unified hybrid pipeline, improving species coverage and round-the-clock wildlife surveillance accuracy.</div>
-        <div class="proj-tags"><span class="tag">Hybrid Detection</span><span class="tag">Night Vision</span><span class="tag">Wildlife AI</span><span class="tag">Deep Learning</span></div>
+        <div class="proj-desc">Unified day-night avian detection pipeline for round-the-clock wildlife surveillance.</div>
+        <div class="proj-tags"><span class="tag">Hybrid Detection</span><span class="tag">Night Vision</span><span class="tag">Wildlife AI</span></div>
       </div>
 
-      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="5">
-        <div class="proj-icon">&#x1F3D8;</div>
-        <span class="proj-venue">SoICT 2025 (To Appear)</span>
-        <div class="proj-name">Multi-modal House Price Prediction</div>
-        <div class="proj-desc">End-to-end pipeline fusing street-view imagery, interior attributes, and macro-economic data using XGBoost and Neural Networks for robust, explainable real-estate valuation.</div>
-        <div class="proj-tags"><span class="tag">Multi-modal Fusion</span><span class="tag">XGBoost</span><span class="tag">Neural Networks</span><span class="tag">Computer Vision</span></div>
-      </div>
-
-      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="6">
-        <div class="proj-icon">&#x1F4F1;</div>
-        <span class="proj-venue">Android Application</span>
-        <div class="proj-name">Timesheet Tracker</div>
-        <div class="proj-desc">A privacy-first Android app built in Kotlin to track time across multiple projects. No login, no cloud, no subscriptions. Clock in and out, add manual entries, view trends, and export timesheets as CSV or PDF. Includes JSON backup and restore so your data survives reinstalls. Every byte stays on your device.<br><br>
-        <a href="https://github.com/kunalagrawal2611/timesheet-tracker" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em;">VIEW ON GITHUB &rarr;</a></div>
-        <div class="proj-tags"><span class="tag">Kotlin</span><span class="tag">Android Studio</span><span class="tag">Mobile Development</span><span class="tag">Privacy-First</span><span class="tag">Productivity</span></div>
-      </div>
-
-      <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="7">
+      <div class="proj-card proj-hidden fade-up" role="button" tabindex="0" data-project="7" aria-label="Open Furniture Matters project details">
         <div class="proj-icon">&#x1FA91;</div>
         <span class="proj-venue">Informatica (Under Review)</span>
         <div class="proj-name">Furniture Matters &mdash; Interior-Aware Valuation</div>
-        <div class="proj-desc">Extends house price prediction by incorporating fine-grained interior furniture attributes, demonstrating that room-level visual semantics carry significant predictive signal for property valuation.</div>
-        <div class="proj-tags"><span class="tag">Interior Analysis</span><span class="tag">Computer Vision</span><span class="tag">Real Estate AI</span><span class="tag">Multi-modal</span></div>
+        <div class="proj-desc">Room-level furniture semantics as predictive signals for property valuation.</div>
+        <div class="proj-tags"><span class="tag">Interior CV</span><span class="tag">Real Estate AI</span></div>
       </div>
 
-      <div class="proj-card fade-up" onclick="openProjectModal(this)" data-project="10">
-        <div class="proj-icon">&#x1F9E1;</div>
-        <span class="proj-venue">Open Source — Claude Code-Style UI</span>
-        <div class="proj-name">Ollama Dashboard — Local AI Agent</div>
-        <div class="proj-desc">A self-hosted, Claude Code-style coding assistant UI with agentic tool-use loop: file read/write, shell execution (with safety blocklist), git operations, web fetching, sub-agent spawning, and multi-agent team collaboration. Built with Next.js 15 + Hono + TypeScript, featuring SSE streaming, markdown rendering, and a dark terminal-inspired interface.<br><br>
-        <a href="https://github.com/kunalagrawal2611/ollama-dashboard" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em;">VIEW ON GITHUB &rarr;</a></div>
-        <div class="proj-tags"><span class="tag">Next.js 15</span><span class="tag">Hono</span><span class="tag">TypeScript</span><span class="tag">Ollama</span><span class="tag">SSE</span><span class="tag">Multi-Agent</span><span class="tag">Open Source</span></div>
-      </div>
-
-      <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="8">
+      <div class="proj-card proj-hidden fade-up" role="button" tabindex="0" data-project="8" aria-label="Open Motorcycle Helmet Detection project details">
         <div class="proj-icon">&#x1F6F5;</div>
-        <span class="proj-venue">SoICT 2024 &mdash; Published</span>
+        <span class="proj-venue">SoICT 2024 — Published</span>
         <div class="proj-name">Motorcycle Helmet Detection</div>
-        <div class="proj-desc">Deep learning model for automated helmet violation detection trained on real-world Vietnam traffic footage across daytime and nighttime conditions, integrated into a city planning simulator.</div>
-        <div class="proj-tags"><span class="tag">Object Detection</span><span class="tag">Traffic Safety</span><span class="tag">OpenCV</span><span class="tag">Benchmarking</span></div>
+        <div class="proj-desc">Helmet violation detector on Vietnam traffic footage, integrated into a city-planning simulator.</div>
+        <div class="proj-tags"><span class="tag">Traffic Safety</span><span class="tag">Benchmarking</span></div>
       </div>
 
-      <div class="proj-card proj-hidden fade-up" onclick="openProjectModal(this)" data-project="9">
+      <div class="proj-card proj-hidden fade-up" role="button" tabindex="0" data-project="9" aria-label="Open MISS project details">
         <div class="proj-icon">&#x1F4CA;</div>
-        <span class="proj-venue">SoICT 2024 &mdash; Published</span>
+        <span class="proj-venue">SoICT 2024 — Published</span>
         <div class="proj-name">Motion Analysis in Static Images (MISS)</div>
-        <div class="proj-desc">Introduced the MISS dataset for motion illusion classification in static images. Demonstrated that color features are statistically significant predictors for how AI models perceive perceptual motion.</div>
-        <div class="proj-tags"><span class="tag">Motion Illusions</span><span class="tag">Dataset Curation</span><span class="tag">Deep Learning</span><span class="tag">Perception</span></div>
+        <div class="proj-desc">MISS dataset for motion illusion classification — color features as predictors of perceptual motion in static images.</div>
+        <div class="proj-tags"><span class="tag">Dataset Curation</span><span class="tag">Perception</span><span class="tag">Deep Learning</span></div>
       </div>
 
     </div>
@@ -971,28 +1085,34 @@
     <div class="skill-group fade-up">
       <div class="skill-group-title">AI &amp; Machine Learning</div>
       <div class="skill-list">
-        <span class="skill-item has-bar" data-level="95"><span class="skill-item-text">Generative AI</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:95%"></div></div></span><span class="skill-item has-bar" data-level="90"><span class="skill-item-text">Large Language Models (LLMs)</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:90%"></div></div></span>
-        <span class="skill-item has-bar" data-level="92"><span class="skill-item-text">Deep Learning</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:92%"></div></div></span><span class="skill-item has-bar" data-level="80"><span class="skill-item-text">XGBoost</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:80%"></div></div></span>
-        <span class="skill-item has-bar" data-level="88"><span class="skill-item-text">Multi-modal Data Fusion</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:88%"></div></div></span><span class="skill-item has-bar" data-level="85"><span class="skill-item-text">Saliency Detection</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:85%"></div></div></span>
-        <span class="skill-item has-bar" data-level="75"><span class="skill-item-text">Scene Graph Generation</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:75%"></div></div></span><span class="skill-item has-bar" data-level="82"><span class="skill-item-text">Prompt Engineering</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:82%"></div></div></span>
+        <span class="skill-item evidence-row"><span>Generative AI</span><span class="skill-evidence">SeMemo, SALOCON</span></span>
+        <span class="skill-item evidence-row"><span>LLMs &amp; VLMs</span><span class="skill-evidence">Kosmos-2, prompt eng.</span></span>
+        <span class="skill-item evidence-row"><span>Deep Learning</span><span class="skill-evidence">11 publications</span></span>
+        <span class="skill-item evidence-row"><span>Multi-modal Fusion</span><span class="skill-evidence">House price, AEye</span></span>
+        <span class="skill-item evidence-row"><span>XGBoost</span><span class="skill-evidence">Valuation pipelines</span></span>
+        <span class="skill-item evidence-row"><span>Prompt Engineering</span><span class="skill-evidence">Vista simulation +50%</span></span>
       </div>
     </div>
     <div class="skill-group fade-up">
       <div class="skill-group-title">Computer Vision</div>
       <div class="skill-list">
-        <span class="skill-item has-bar" data-level="90"><span class="skill-item-text">Object Detection</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:90%"></div></div></span><span class="skill-item has-bar" data-level="78"><span class="skill-item-text">Image Memorability Analysis</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:78%"></div></div></span>
-        <span class="skill-item has-bar" data-level="75"><span class="skill-item-text">Motion Analysis</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:75%"></div></div></span><span class="skill-item has-bar" data-level="82"><span class="skill-item-text">Image Segmentation</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:82%"></div></div></span>
-        <span class="skill-item has-bar" data-level="70"><span class="skill-item-text">Adverse Weather Robustness</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:70%"></div></div></span><span class="skill-item has-bar" data-level="80"><span class="skill-item-text">Video Analysis</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:80%"></div></div></span>
-        <span class="skill-item has-bar" data-level="72"><span class="skill-item-text">Image Restoration</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:72%"></div></div></span><span class="skill-item has-bar" data-level="85"><span class="skill-item-text">Benchmarking &amp; Evaluation</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:85%"></div></div></span>
+        <span class="skill-item evidence-row"><span>Object Detection</span><span class="skill-evidence">6+ benchmark papers</span></span>
+        <span class="skill-item evidence-row"><span>Saliency &amp; Scene Graphs</span><span class="skill-evidence">SALOCON (ACM MM)</span></span>
+        <span class="skill-item evidence-row"><span>Image Segmentation</span><span class="skill-evidence">60k+ clinical images</span></span>
+        <span class="skill-item evidence-row"><span>Video Analysis</span><span class="skill-evidence">5k+ hrs footage</span></span>
+        <span class="skill-item evidence-row"><span>Adverse Weather CV</span><span class="skill-evidence">MVA 2025, CISS</span></span>
+        <span class="skill-item evidence-row"><span>Benchmarking</span><span class="skill-evidence">Helmet, de-photobomb</span></span>
       </div>
     </div>
     <div class="skill-group fade-up">
       <div class="skill-group-title">Programming &amp; Tools</div>
       <div class="skill-list">
-        <span class="skill-item has-bar" data-level="95"><span class="skill-item-text">Python (PyTorch, TensorFlow, Keras)</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:95%"></div></div></span><span class="skill-item has-bar" data-level="85"><span class="skill-item-text">OpenCV</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:85%"></div></div></span>
-        <span class="skill-item has-bar" data-level="70"><span class="skill-item-text">C / C++</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:70%"></div></div></span><span class="skill-item has-bar" data-level="65"><span class="skill-item-text">SQL &amp; R</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:65%"></div></div></span>
-        <span class="skill-item has-bar" data-level="60"><span class="skill-item-text">MATLAB</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:60%"></div></div></span><span class="skill-item has-bar" data-level="72"><span class="skill-item-text">AWS (EC2, S3, RDS)</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:72%"></div></div></span>
-        <span class="skill-item has-bar" data-level="88"><span class="skill-item-text">Linux &amp; Git</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:88%"></div></div></span><span class="skill-item has-bar" data-level="65"><span class="skill-item-text">Tableau &amp; LaTeX</span><div class="skill-bar"><div class="skill-bar-fill" style="--level:65%"></div></div></span>
+        <span class="skill-item evidence-row"><span>Python / PyTorch</span><span class="skill-evidence">Primary research stack</span></span>
+        <span class="skill-item evidence-row"><span>TypeScript / Next.js</span><span class="skill-evidence">Ollama Dashboard</span></span>
+        <span class="skill-item evidence-row"><span>Kotlin / Android</span><span class="skill-evidence">Timesheet Tracker</span></span>
+        <span class="skill-item evidence-row"><span>OpenCV &amp; SQL</span><span class="skill-evidence">Detection + analytics</span></span>
+        <span class="skill-item evidence-row"><span>AWS (EC2, S3, RDS)</span><span class="skill-evidence">Cloud Practitioner</span></span>
+        <span class="skill-item evidence-row"><span>Linux &amp; Git</span><span class="skill-evidence">Daily workflow</span></span>
       </div>
     </div>
     <div class="skill-group fade-up" style="grid-column:1/-1;">
@@ -1010,12 +1130,14 @@
   <div class="contact-inner">
     <div class="section-label" style="justify-content:center;">Contact</div>
     <h2 class="contact-title fade-up" data-decode>Let's build something<br><em style="font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent);">worth seeing</em></h2>
-    <p class="contact-sub fade-up">I am actively exploring full-time roles in Machine Learning Engineering, Computer Vision Research, and Applied AI. If you are working on hard problems in vision or AI, I would love to connect.</p>
+    <p class="contact-sub fade-up">Actively seeking <strong>ML Engineer</strong>, <strong>Computer Vision Research</strong>, and <strong>Applied AI</strong> roles (full-time from May 2027, internships welcome). Download my CV or book 15 minutes — I reply within 24 hours.</p>
     <div class="contact-links fade-up">
       <a href="mailto:kunalagarwal2611@gmail.com" class="contact-link">&#x2709; kunalagarwal2611@gmail.com</a>
+      <a href="tel:+19379932108" class="contact-link">&#x1F4DE; +1 (937) 993-2108</a>
+      <a href="https://github.com/kunalagrawal2611" class="contact-link" target="_blank" rel="noopener">&#x1F4BB; GitHub</a>
       <a href="https://www.linkedin.com/in/kunal-agrawal-phd/" class="contact-link" target="_blank" rel="noopener">&#x1F4BC; LinkedIn</a>
       <a href="https://scholar.google.com/citations?user=4hveYIAAAAAJ&hl=en" class="contact-link" target="_blank" rel="noopener">&#x1F393; Google Scholar</a>
-      <a href="https://www.researchgate.net/profile/Kunal-Agrawal-6/research" class="contact-link" target="_blank" rel="noopener">&#x1F4D6; ResearchGate</a>
+      <a href="Kunal_Agrawal_CV.pdf" download class="contact-link">&#x1F4C4; Download CV</a>
     </div>
 
     <div class="contact-form-wrap fade-up">
@@ -1319,16 +1441,15 @@
     });
   }
 
-  /* ── Dynamic Greeting ────────────────────────────────── */
+  /* ── Dynamic Greeting (subtle — keeps professional tagline) ── */
   (function() {
     const hour = new Date().getHours();
     let greeting = 'Good morning';
-    let emoji = '☀️';
-    if (hour >= 12 && hour < 18) { greeting = 'Good afternoon'; emoji = '🌤️'; }
-    else if (hour >= 18 || hour < 5) { greeting = 'Good evening'; emoji = '🌙'; }
+    if (hour >= 12 && hour < 18) greeting = 'Good afternoon';
+    else if (hour >= 18 || hour < 5) greeting = 'Good evening';
     const heroTag = document.getElementById('heroTag');
     if (heroTag) {
-      heroTag.innerHTML = `${emoji} ${greeting}, researcher &middot; Dayton, OH &middot; Open to Opportunities`;
+      heroTag.innerHTML = `PhD Researcher &middot; Dayton, OH &middot; Open to Opportunities <span style="opacity:0.65;font-size:0.9em"> — ${greeting}</span>`;
     }
   })();
 
@@ -1380,7 +1501,10 @@
     });
   }, { threshold: 0 });
 
-  document.querySelectorAll('[data-decode]').forEach(el => decodeObserver.observe(el));
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    document.querySelectorAll('[data-decode]').forEach(el => decodeObserver.observe(el));
+  }
 
   /* ── [ENHANCEMENT] 3D & Scroll Enhancements ─────────── */
   (function() {
@@ -1396,21 +1520,16 @@
       initParallax();
     }
 
-    // Citation counter & tagline cycling run on all devices (not blocked by mobile check)
-    function initCitationAndTagline() {
-      if (prefersReduced) return;
-      initCyclingTagline();
-      initCitationCounter();
-    }
+    // Citation counter runs always; tagline cycling only when motion is OK
+    initCitationCounter();
+    if (!prefersReduced) initCyclingTagline();
 
     if (typeof THREE === 'undefined') {
       window.addEventListener('load', () => {
         initEnhancements();
-        initCitationAndTagline();
       });
     } else {
       initEnhancements();
-      initCitationAndTagline();
     }
 
     function initHeroScene() {
@@ -1752,9 +1871,12 @@
     })();
 
     /* ── PROJECT MODAL ─────────────────────────────────── */
+    let lastProjectTrigger = null;
+
     function openProjectModal(el) {
-      const card = el.closest('.proj-card');
+      const card = el.closest ? el.closest('.proj-card') : el;
       if (!card) return;
+      lastProjectTrigger = card;
 
       const icon = card.querySelector('.proj-icon')?.textContent || '';
       const venue = card.querySelector('.proj-venue')?.textContent || '';
@@ -1775,14 +1897,30 @@
         tagsEl.appendChild(span);
       });
 
-      document.getElementById('project-modal').classList.add('active');
+      const modal = document.getElementById('project-modal');
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      modal.querySelector('.modal-close')?.focus();
     }
 
     function closeProjectModal() {
-      document.getElementById('project-modal').classList.remove('active');
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (lastProjectTrigger) lastProjectTrigger.focus();
     }
+
+    document.querySelectorAll('.proj-card[role="button"]').forEach(card => {
+      card.addEventListener('click', () => openProjectModal(card));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openProjectModal(card);
+        }
+      });
+    });
 
     document.getElementById('project-modal').addEventListener('click', function(e) {
       if (e.target === this) closeProjectModal();
