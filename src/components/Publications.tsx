@@ -87,7 +87,7 @@ export default function Publications() {
     <section id="publications" className="border-t border-border bg-surface/40 scroll-mt-20">
       <div className="mx-auto max-w-site px-6 py-16 lg:px-8 lg:py-24">
         <Reveal>
-          <p className="section-label">02 — Publications</p>
+          <p className="section-label">02 · Publications</p>
           <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">
             Peer-reviewed research output
           </h2>

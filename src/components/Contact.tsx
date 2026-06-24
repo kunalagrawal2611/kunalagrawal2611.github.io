@@ -14,7 +14,7 @@ export default function Contact() {
       <div className="mx-auto max-w-site px-6 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <p className="section-label">05 — Contact</p>
+            <p className="section-label">05 · Contact</p>
             <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">
               Let&apos;s build something together.
             </h2>

@@ -62,7 +62,7 @@ export default function ContactForm() {
           botcheck: "",
           name: fields.name.trim(),
           email: fields.email.trim(),
-          subject: `${fields.subject} — Portfolio Contact from ${fields.name.trim()}`,
+          subject: `${fields.subject} - Portfolio Contact from ${fields.name.trim()}`,
           message: fields.message.trim(),
           from_name: "Portfolio Notification",
         }),
@@ -94,7 +94,7 @@ export default function ContactForm() {
           </div>
           <h3 className="mt-5 text-lg font-semibold text-white">Message sent!</h3>
           <p className="mt-2 max-w-sm text-sm text-muted">
-            Thanks for reaching out — I&apos;ll get back to you within 24 hours.
+            Thanks for reaching out. I&apos;ll get back to you within 24 hours.
           </p>
         </div>
       </>
@@ -109,7 +109,7 @@ export default function ContactForm() {
           Send a message
         </p>
 
-        {/* Honeypot — hidden from users, catches bots */}
+        {/* Honeypot - hidden from users, catches bots */}
         <input
           type="checkbox"
           name="botcheck"

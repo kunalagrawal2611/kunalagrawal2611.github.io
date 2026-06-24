@@ -139,7 +139,7 @@ export default function Research() {
         <Reveal>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="section-label">01 — Research</p>
+              <p className="section-label">01 · Research</p>
               <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">
                 Research projects & systems
               </h2>

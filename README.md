@@ -1,4 +1,4 @@
-# Kunal Agrawal — Portfolio
+# Kunal Agrawal | Portfolio
 
 Dark technical portfolio for AI / computer vision research. Built with Vite, React 19, TypeScript, and Tailwind CSS.
 

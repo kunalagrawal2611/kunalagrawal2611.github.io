@@ -9,12 +9,12 @@ export const personal = {
   title: "PhD · ML Engineer · Computer Vision & Generative AI",
   headline: "I build AI systems that see, understand, and remember.",
   tagline:
-    "PhD researcher at the University of Dayton VMR Lab — shipping computer vision, generative AI, and open-source ML tools for research and industry.",
+    "PhD researcher at the University of Dayton VMR Lab, shipping computer vision, generative AI, and open-source ML tools for research and industry.",
   email: "kunalagarwal2611@gmail.com",
   phone: "+1 (937) 993-2108",
   location: "Dayton, OH",
   summary:
-    "I build AI systems that see, understand, and remember. PhD researcher in computer vision at the University of Dayton (GPA 3.96), working in the Vision & Mixed Reality Lab under Dr. Tam Nguyen. Published across Machine Vision and Applications, SoICT, CISS, and the British Journal of Ophthalmology, with work under review at IEEE TMM and ACM MM. I ship research-grade ML — from SeMemo and SALOCON to AEye and multi-modal valuation pipelines — plus open-source tools in TypeScript, Python, and Kotlin. AWS Certified; open to ML engineering and computer vision research roles.",
+    "I build AI systems that see, understand, and remember. PhD researcher in computer vision at the University of Dayton (GPA 3.96), working in the Vision & Mixed Reality Lab under Dr. Tam Nguyen. Published across Machine Vision and Applications, SoICT, CISS, and the British Journal of Ophthalmology, with work under review at IEEE TMM and ACM MM. I ship research-grade ML, from SeMemo and SALOCON to AEye and multi-modal valuation pipelines, plus open-source tools in TypeScript, Python, and Kotlin. AWS Certified; open to ML engineering and computer vision research roles.",
   links: {
     scholar: SCHOLAR,
     linkedin: "https://www.linkedin.com/in/kunal-agrawal-phd/",
@@ -31,21 +31,21 @@ export const featuredWork = [
   {
     label: "Ollama Dashboard",
     description:
-      "Self-hosted AI coding assistant with agentic tool-use — Next.js, Hono, and local Ollama.",
+      "Self-hosted AI coding assistant with agentic tool-use, Next.js, Hono, and local Ollama.",
     href: `${GITHUB}/ollama-dashboard`,
     tag: "Flagship OSS",
   },
   {
     label: "SeMemo",
     description:
-      "Generative AI dataset for visual working memory — journal submission at IEEE TMM.",
+      "Generative AI dataset for visual working memory, journal submission at IEEE TMM.",
     href: "#research",
     tag: "IEEE TMM",
   },
   {
     label: "SALOCON",
     description:
-      "3,000-image saliency dataset and context-aware detection — under review at ACM MM.",
+      "3,000-image saliency dataset and context-aware detection, under review at ACM MM.",
     href: `${GITHUB}/SALOCON`,
     tag: "ACM MM '26",
   },
@@ -65,7 +65,7 @@ export const education = [
     period: "Aug 2024 — May 2027 (Expected)",
     gpa: "3.96",
     focus:
-      "Vision & Mixed Reality Lab · Dr. Tam Nguyen — Saliency Detection, Scene Graph Generation, Visual Working Memory, Multi-modal Data Fusion",
+      "Vision & Mixed Reality Lab · Dr. Tam Nguyen, Saliency Detection, Scene Graph Generation, Visual Working Memory, Multi-modal Data Fusion",
     award: "Research and Scholarship Award (Doctoral Student)",
   },
   {
@@ -96,7 +96,7 @@ export const experience = [
       "Advisor: Dr. Tam Nguyen · Vision & Mixed Reality Lab.",
       "Developed the SeMemo dataset using Generative AI to disentangle semantic content from low-level visual features for Visual Working Memory analysis.",
       "Engineered a multi-modal house price prediction framework integrating street-view visual features, interior attributes, and macro-economic data using XGBoost and Neural Networks.",
-      "Spearheaded AEye — automated avian monitoring from high-resolution streaming video.",
+      "Spearheaded AEye, automated avian monitoring from high-resolution streaming video.",
       "Researched object-level visual attention and saliency detection via Scene Graphs and Kosmos-2 vision-language models.",
     ],
     tags: ["Generative AI", "Multi-modal Fusion", "Scene Graphs", "VWM"],
@@ -306,7 +306,7 @@ export const teaching = [
     org: "University of Dayton",
     period: "Jan 2024 — Present",
     highlights: [
-      "Peer reviewer for international CV and ML conferences — evaluating rigor, novelty, and reproducibility.",
+      "Peer reviewer for international CV and ML conferences, evaluating rigor, novelty, and reproducibility.",
       "Mentored junior graduate students in experimental design, PyTorch/OpenCV implementation, and the publication pipeline.",
     ],
   },
@@ -415,7 +415,7 @@ export const researchAreas: ResearchProject[] = [
     label: "SALOCON",
     subtitle: "Salient Object Detection in Context",
     description:
-      "Object-level saliency detection using scene context, Scene Graphs, and Kosmos-2 — with a 3,000-image SALOCON dataset released on GitHub.",
+      "Object-level saliency detection using scene context, Scene Graphs, and Kosmos-2, with a 3,000-image SALOCON dataset released on GitHub.",
     stack: ["PyTorch", "Scene Graphs", "Kosmos-2", "Saliency"],
     metric: "ACM MM '26",
     details: {
@@ -423,7 +423,7 @@ export const researchAreas: ResearchProject[] = [
       org: "University of Dayton · Vision & Mixed Reality Lab",
       period: "2024 — Present",
       status: "Under Review",
-      publication: "SALOCON: Salient Object Detection in Context — ACM MM, 2026",
+      publication: "SALOCON: Salient Object Detection in Context, ACM MM, 2026",
       highlights: [
         "Leverages Scene Graphs and Kosmos-2 for object-level visual attention modeling.",
         "Released SALOCON dataset: 3,000 RGB images with paired binary ground-truth masks.",
@@ -451,7 +451,7 @@ export const researchAreas: ResearchProject[] = [
       period: "2024 — Present",
       status: "Under Review",
       publication:
-        "Semantic Matters in Short-Term Image Memorability — IEEE Transactions on Multimedia (IEEE TMM)",
+        "Semantic Matters in Short-Term Image Memorability, IEEE Transactions on Multimedia (IEEE TMM)",
       highlights: [
         "Built with Generative AI to separate semantic content from low-level visual features.",
         "Evaluates human memory fidelity through a change-detection experimental paradigm.",
@@ -597,7 +597,7 @@ export const researchAreas: ResearchProject[] = [
     label: "Adverse Weather Detection",
     subtitle: "Autonomous Driving Benchmark",
     description:
-      "Comprehensive benchmarking of object detectors under rain, fog, and snow — published at CISS 2024 and extended in Machine Vision and Applications.",
+      "Comprehensive benchmarking of object detectors under rain, fog, and snow, published at CISS 2024 and extended in Machine Vision and Applications.",
     stack: ["Object Detection", "Benchmarking", "YOLO"],
     metric: "CISS '24",
     details: {
@@ -633,7 +633,7 @@ export const researchAreas: ResearchProject[] = [
       period: "2024",
       status: "Published",
       publication:
-        "Motorcycle Helmet Detection Benchmarking — International Symposium on Information and Communication Technology, 2024",
+        "Motorcycle Helmet Detection Benchmarking, International Symposium on Information and Communication Technology, 2024",
       highlights: [
         "Created a benchmarking framework for helmet compliance in traffic monitoring.",
         "Released MHDD dataset with color/grayscale splits and fog, rain, and snow augmentations.",
@@ -660,7 +660,7 @@ export const researchAreas: ResearchProject[] = [
       org: "University of Dayton · VMR Lab",
       period: "2024",
       status: "Published",
-      publication: "Image de-photobombing benchmark — Multimedia Tools and Applications, 2024",
+      publication: "Image de-photobombing benchmark, Multimedia Tools and Applications, 2024",
       highlights: [
         "Introduced a benchmark dataset for photobomber removal and scene restoration.",
         "Standardized evaluation for image inpainting and restoration methods.",
@@ -681,7 +681,7 @@ export const researchAreas: ResearchProject[] = [
     label: "Motion in Static Images",
     subtitle: "Implicit Motion Analysis",
     description:
-      "Motion analysis framework for static images — detecting and reasoning about implied movement without explicit video sequences.",
+      "Motion analysis framework for static images, detecting and reasoning about implied movement without explicit video sequences.",
     stack: ["Motion Analysis", "Computer Vision", "SoICT"],
     metric: "SoICT '24",
     details: {
@@ -690,7 +690,7 @@ export const researchAreas: ResearchProject[] = [
       period: "2024",
       status: "Published",
       publication:
-        "Motion Analysis in Static Images — International Symposium on Information and Communication Technology, 2024",
+        "Motion Analysis in Static Images, International Symposium on Information and Communication Technology, 2024",
       highlights: [
         "Reasons about implied motion in still photographs without video input.",
         "Released MISS dataset with color/grayscale splits and motion vs. non-motion labels.",
@@ -729,7 +729,7 @@ export const researchAreas: ResearchProject[] = [
     label: "Ollama Dashboard",
     subtitle: "Local AI Coding Assistant",
     description:
-      "Self-hosted Claude-Code-style assistant with agentic tool-use — file I/O, shell, git, web fetch — built on Next.js 15, Hono, and local Ollama models.",
+      "Self-hosted Claude-Code-style assistant with agentic tool-use, file I/O, shell, git, web fetch, built on Next.js 15, Hono, and local Ollama models.",
     stack: ["Next.js", "TypeScript", "Hono", "Ollama"],
     metric: "Shipped",
     details: {
@@ -750,7 +750,7 @@ export const researchAreas: ResearchProject[] = [
     label: "Resume Evaluator",
     subtitle: "AI Resume Scoring Web App",
     description:
-      "Browser-friendly FastAPI wrapper around HackerRank's open-source Hiring Agent — upload a PDF resume and view structured scoring in the browser.",
+      "Browser-friendly FastAPI wrapper around HackerRank's open-source Hiring Agent, upload a PDF resume and view structured scoring in the browser.",
     stack: ["Python", "FastAPI", "LLM", "Ollama"],
     metric: "Web App",
     details: {
@@ -771,7 +771,7 @@ export const researchAreas: ResearchProject[] = [
     label: "Timesheet Tracker",
     subtitle: "Android Productivity App",
     description:
-      "Kotlin Android app for project-based time tracking — clock in/out, manual entries, history, and release APK builds.",
+      "Kotlin Android app for project-based time tracking, clock in/out, manual entries, history, and release APK builds.",
     stack: ["Kotlin", "Android", "Gradle"],
     metric: "Android",
     details: {
