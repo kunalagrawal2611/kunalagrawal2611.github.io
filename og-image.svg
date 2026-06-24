@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#09090B"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.35"/>
+  <circle cx="980" cy="120" r="220" fill="#22D3EE" opacity="0.08"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#27272A" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="80" y="80" width="48" height="48" rx="12" fill="#131316" stroke="#27272A"/>
+  <rect x="92" y="92" width="12" height="12" rx="2" fill="#22D3EE" opacity="0.9"/>
+  <rect x="108" y="92" width="12" height="12" rx="2" fill="#22D3EE" opacity="0.4"/>
+  <rect x="92" y="108" width="12" height="12" rx="2" fill="#22D3EE" opacity="0.4"/>
+  <rect x="108" y="108" width="12" height="12" rx="2" fill="#22D3EE" opacity="0.7"/>
+  <text x="148" y="112" fill="#FAFAFA" font-family="system-ui,sans-serif" font-size="28" font-weight="600">Kunal Agrawal</text>
+  <text x="80" y="220" fill="#22D3EE" font-family="system-ui,sans-serif" font-size="52" font-weight="700">AI systems that see,</text>
+  <text x="80" y="290" fill="#22D3EE" font-family="system-ui,sans-serif" font-size="52" font-weight="700">understand, and remember.</text>
+  <text x="80" y="360" fill="#A1A1AA" font-family="ui-monospace,monospace" font-size="24">PhD · ML Engineer · Computer Vision · VMR Lab</text>
+  <text x="80" y="520" fill="#71717A" font-family="ui-monospace,monospace" font-size="20">12+ publications · Open-source builder · Dayton, OH</text>
+</svg>

@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "node scripts/use-dev-index.mjs && vite",
+    "build": "node scripts/use-dev-index.mjs && tsc -b && vite build",
     "preview": "vite preview",
     "update-metrics": "python scripts/fetch_scholar.py"
   },
