@@ -1,0 +1,13 @@
+node_modules
+dist
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+tsconfig.tsbuildinfo
+public/profile-original.jpg
+DSC_*.JPEG
+DSC_*.jpeg
+DSC_*.JPG
+DSC_*.jpg
