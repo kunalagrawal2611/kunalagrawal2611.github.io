@@ -3,10 +3,12 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main, master]
+    paths-ignore:
+      - "docs/**"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -34,6 +36,25 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # User sites (username.github.io) can publish from /docs on main when
+      # GitHub Actions artifact deploy is not selected in Pages settings.
+      - name: Publish build to docs/
+        run: |
+          rm -rf docs
+          cp -r dist docs
+
+      - name: Commit docs for branch-based Pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f docs/
+          git diff --staged --quiet && echo "No docs changes" && exit 0
+          git commit -m "chore: deploy site to docs"
+          git push
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
